@@ -1,3 +1,4 @@
+package ShoppingCart;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -8,23 +9,24 @@ import java.util.logging.Logger;
 
 /**
  * This Class offers Promotion based on Total Quantity of all Products
- * @author Mohit
+ * 
+ * @author Mohit Sharma
  */
-public class FixedProductPromotion implements Promotion{
-	double	fixedDiscount;
-	double	minPrice;
-	int 	minQuantity;
-	
+public class FixedProductPromotion implements Promotion {
+	double fixedDiscount;
+	double minPrice;
+	int minQuantity;
+
 	@Override
 	public double getFixedDiscount() {
 		return fixedDiscount;
 	}
-	
+
 	@Override
 	public double getMinimumPrice() {
 		return minPrice;
 	}
-	
+
 	@Override
 	public boolean isPromotionApplicable(String enteredPromocode) {
 		for (PromotionEnum promo : PromotionEnum.values()) {
@@ -42,26 +44,26 @@ public class FixedProductPromotion implements Promotion{
 					}
 				} catch (ParseException ex) {
 					Logger.getLogger(FixedOrderPromotion.class.getName()).log(Level.SEVERE, null, ex);
-				}  		
+				}
 			}
 		}
 		return false;
 	}
-	
+
 	@Override
 	public void setFixedDiscount() {
 		fixedDiscount = 0.15;
 	}
-	
+
 	@Override
-	public void setMinimumPrice() {}
-	
+	public void setMinimumPrice() {
+	}
+
 	public int getMinQuantity() {
 		return minQuantity;
 	}
-	
+
 	public void setMinQuantity() {
 		minQuantity = 20;
 	}
-	
 }

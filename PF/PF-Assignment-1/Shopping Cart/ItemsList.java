@@ -1,48 +1,51 @@
+package ShoppingCart;
+
 /**
  * It is used to describe the properties of products
- * @author Mohit
+ * 
+ * @author Mohit Sharma
  */
 public class ItemsList {
-	String	item_Name;
-	int	quantity;
-	double	price;
-	int	item_ID;
-	
-	public String getItem_name() {
-		return item_Name;
+	String itemName;
+	int quantity;
+	double price;
+	int itemID;
+
+	public String getItemName() {
+		return itemName;
 	}
-	
-	public int getItem_ID() {
-		return item_ID;
+
+	public int getItemID() {
+		return itemID;
 	}
-	
+
 	public double getPrice() {
 		return price;
 	}
-	
+
 	public int getQuantity() {
 		return quantity;
 	}
-	
-	public void setItem_name(String item_Name) {
-		this.item_Name = item_Name;
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
-	
-	public void setItem_ID(int item_ID) {
-		this.item_ID = item_ID;
+
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
-	
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
-	public ItemsList(String item_Name, int item_ID, int quantity, double price) {
-		this.item_Name = item_Name;
-		this.item_ID = item_ID;
+
+	public ItemsList(String itemName, int itemID, int quantity, double price) {
+		this.itemName = itemName;
+		this.itemID = itemID;
 		this.quantity = quantity;
 		this.price = price;
 	}

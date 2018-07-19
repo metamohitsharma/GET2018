@@ -1,22 +1,25 @@
+package ShoppingCart;
+
 /**
  * This class describes the properties of Shopping Cart Items
- * @author Mohit
+ * 
+ * @author Mohit Sharma
  */
 public class ShoppingCartItems {
-	String	item_Name;
-	int	item_ID;
-	int	quantity;
-	double	price;
-	static double	total_Amount;
+	String itemName;
+	int itemID;
+	int quantity;
+	double price;
+	static double totalAmount;
 
-	public String getItem_Name() {
-		return item_Name;
+	public String getItemName() {
+		return itemName;
 	}
 
-	public int getItem_ID() {
-		return item_ID;
+	public int getItemID() {
+		return itemID;
 	}
-	
+
 	public double getPrice() {
 		return price;
 	}
@@ -25,18 +28,18 @@ public class ShoppingCartItems {
 		return quantity;
 	}
 
-	public static double getTotal_Amount() {
-		return total_Amount;
+	public static double getTotalAmount() {
+		return totalAmount;
 	}
 
-	public void setItem_Name(String item_Name) {
-		this.item_Name = item_Name;
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
 
-	public void setItem_ID(int item_ID) {
-		this.item_ID = item_ID;
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
-	
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
@@ -45,13 +48,13 @@ public class ShoppingCartItems {
 		this.quantity = quantity;
 	}
 
-	public static void setTotal_Amount(double total_Amount) {
-		ShoppingCartItems.total_Amount = total_Amount;
+	public static void setTotalAmount(double totalAmount) {
+		ShoppingCartItems.totalAmount = totalAmount;
 	}
-	
-	public ShoppingCartItems(String item_Name, int item_ID, int quantity, double price) {
-		this.item_Name = item_Name;
-		this.item_ID = item_ID;
+
+	public ShoppingCartItems(String itemName, int itemID, int quantity, double price) {
+		this.itemName = itemName;
+		this.itemID = itemID;
 		this.quantity = quantity;
 		this.price = price;
 	}

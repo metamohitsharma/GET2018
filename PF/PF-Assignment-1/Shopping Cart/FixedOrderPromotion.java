@@ -1,3 +1,4 @@
+package ShoppingCart;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -8,20 +9,21 @@ import java.util.logging.Logger;
 
 /**
  * This Class offers Promotion based on Total Amount to be paid
- * @author Mohit
+ * 
+ * @author Mohit Sharma
  */
 public class FixedOrderPromotion implements Promotion {
-	double	fixedDiscount;
-	double	minPrice;
+	double fixedDiscount;
+	double minPrice;
 	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 	Date date = new Date();
 	String getDate = sdf.format(date);
-	
+
 	@Override
 	public double getMinimumPrice() {
 		return minPrice;
 	}
-	
+
 	@Override
 	public void setMinimumPrice() {
 		minPrice = 2000;
@@ -31,12 +33,12 @@ public class FixedOrderPromotion implements Promotion {
 	public double getFixedDiscount() {
 		return fixedDiscount;
 	}
-	
+
 	@Override
 	public void setFixedDiscount() {
 		fixedDiscount = 0.15;
 	}
-	
+
 	@Override
 	public boolean isPromotionApplicable(String enteredPromocode) {
 		for (PromotionEnum promo : PromotionEnum.values()) {
@@ -54,7 +56,7 @@ public class FixedOrderPromotion implements Promotion {
 					}
 				} catch (ParseException ex) {
 					Logger.getLogger(FixedOrderPromotion.class.getName()).log(Level.SEVERE, null, ex);
-				}		
+				}
 			}
 		}
 		return false;
