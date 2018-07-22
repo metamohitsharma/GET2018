@@ -1,4 +1,4 @@
-package StringOperations;
+package GET2018.PF.PFAssignment3.StringOperations;
 
 import java.util.ArrayList;
 
@@ -56,11 +56,9 @@ public class StringOperations {
 		String viceVersa = "";
 		int lowerToUpper = 'a' - 'A';
 		for (int i = 0; i < operatedString.length(); i++) {
-			if (operatedString.charAt(i) >= 'a'
-					&& operatedString.charAt(i) <= 'z') {
+			if (operatedString.charAt(i) >= 'a' && operatedString.charAt(i) <= 'z') {
 				viceVersa = viceVersa + (char) (operatedString.charAt(i) - lowerToUpper);
-			} else if (operatedString.charAt(i) >= 'A'
-					&& operatedString.charAt(i) <= 'Z') {
+			} else if (operatedString.charAt(i) >= 'A' && operatedString.charAt(i) <= 'Z') {
 				viceVersa = viceVersa + (char) (operatedString.charAt(i) + lowerToUpper);
 			} else if (operatedString.charAt(i) == ' ') {
 				viceVersa = viceVersa + " ";
@@ -83,8 +81,7 @@ public class StringOperations {
 		int characterCount = 0;
 		String wordTaker = "";
 		for (int i = 0; i < operatedString.length(); i++) {
-			if ((char) operatedString.charAt(i) == ' '
-					|| i == operatedString.length() - 1) {
+			if ((char) operatedString.charAt(i) == ' ' || i == operatedString.length() - 1) {
 				if (i == operatedString.length() - 1) {
 					wordCount.add(characterCount + 1);
 					wordTaker = wordTaker + operatedString.charAt(operatedString.length() - 1);

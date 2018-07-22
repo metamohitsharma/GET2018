@@ -1,6 +1,6 @@
-package Marksheet;
+package GET2018.PF.PFAssignment3.Marksheet;
 
-import java.util.Scanner;
+import java.text.DecimalFormat;
 
 /**
  * Computes different operations on grades of Students
@@ -11,21 +11,13 @@ import java.util.Scanner;
 public class Marksheet {
 	double gradesOfStudents[];
 	int noOfStudents;
+	DecimalFormat decimalFormatSpecifier = new DecimalFormat(".##");
 
-	public Marksheet(int noOfStudents) {
+	public Marksheet(int noOfStudents, double[] gradesInput) {
 		this.noOfStudents = noOfStudents;
 		gradesOfStudents = new double[noOfStudents];
-	}
-
-	/**
-	 * It initializes the Grades of Students
-	 */
-	void initializeGrades() {
-		Scanner inputGrades = new Scanner(System.in);
 		for (int i = 0; i < noOfStudents; i++) {
-			System.out.println("Enter the grade for Student " + (i + 1)
-					+ " between 0 to 100");
-			gradesOfStudents[i] = inputGrades.nextDouble();
+			gradesOfStudents = gradesInput;
 		}
 	}
 
@@ -39,7 +31,7 @@ public class Marksheet {
 		for (int i = 0; i < noOfStudents; i++) {
 			averageGrades = averageGrades + gradesOfStudents[i];
 		}
-		return (double) averageGrades / noOfStudents;
+		return Double.parseDouble(decimalFormatSpecifier.format((double) averageGrades / noOfStudents));
 	}
 
 	/**
@@ -54,7 +46,7 @@ public class Marksheet {
 				maxGrade = gradesOfStudents[i];
 			}
 		}
-		return maxGrade;
+		return Double.parseDouble(decimalFormatSpecifier.format(maxGrade));
 	}
 
 	/**
@@ -69,7 +61,7 @@ public class Marksheet {
 				minGrade = gradesOfStudents[i];
 			}
 		}
-		return minGrade;
+		return Double.parseDouble(decimalFormatSpecifier.format(minGrade));
 	}
 
 	/**
@@ -84,20 +76,6 @@ public class Marksheet {
 				noOfPassedStudents++;
 			}
 		}
-		return (double) noOfPassedStudents / noOfStudents * 100;
-	}
-
-	/**
-	 * Checks whether the grades are in range of 0 to 100
-	 * 
-	 * @return
-	 */
-	boolean checkEnteredGrades() {
-		for (int i = 0; i < noOfStudents; i++) {
-			if (gradesOfStudents[i] > 100 || gradesOfStudents[i] < 0) {
-				return true;
-			}
-		}
-		return false;
+		return Double.parseDouble(decimalFormatSpecifier.format((double) noOfPassedStudents / noOfStudents * 100));
 	}
 }

@@ -1,4 +1,6 @@
-package AreaCalculator;
+package GET2018.PF.PFAssignment3.AreaCalculator;
+
+import java.text.DecimalFormat;
 
 /**
  * It computes Area of Different Geometrical Shapes
@@ -7,6 +9,7 @@ package AreaCalculator;
  *
  */
 public class AreaCalculator {
+	DecimalFormat decimalFormatSpecifier = new DecimalFormat(".##");
 
 	/**
 	 * Computes Area of Triangle
@@ -16,7 +19,8 @@ public class AreaCalculator {
 	 * @return
 	 */
 	double areaOfTriangle(double width, double height) {
-		return 0.5 * width * height;
+		double area = 0.5 * width * height;
+		return Double.parseDouble(decimalFormatSpecifier.format(area));
 	}
 
 	/**
@@ -27,7 +31,8 @@ public class AreaCalculator {
 	 * @return
 	 */
 	double areaOfRectangle(double width, double height) {
-		return width * height;
+		double area = width * height;
+		return Double.parseDouble(decimalFormatSpecifier.format(area));
 	}
 
 	/**
@@ -37,7 +42,8 @@ public class AreaCalculator {
 	 * @return
 	 */
 	double areaOfSquare(double width) {
-		return width * width;
+		double area = width * width;
+		return Double.parseDouble(decimalFormatSpecifier.format(area));
 	}
 
 	/**
@@ -47,6 +53,7 @@ public class AreaCalculator {
 	 * @return
 	 */
 	double areaOfCircle(double radius) {
-		return Math.PI * radius * radius;
+		double area = Math.PI * radius * radius;
+		return Double.parseDouble(decimalFormatSpecifier.format(area));
 	}
 }
