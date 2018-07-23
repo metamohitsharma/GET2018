@@ -5,7 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class StringOperationsTest {
+public class StringOperationsNegativeTest {
+
 	StringOperations operations;
 
 	@Before
@@ -15,21 +16,22 @@ public class StringOperationsTest {
 
 	@Test
 	public void testEquals() {
-		assertEquals(0, operations.isEquals("Graduate Engineering"));
+		assertNotEquals(1, operations.isEquals("Graduate Engineering"));
 	}
 
 	@Test
 	public void testReverseString() {
-		assertEquals("eeniarT reenignE etaudarG", operations.reverseString());
+		assertNotEquals("eeniarT reenignE", operations.reverseString());
 	}
 
 	@Test
 	public void testViceVersa() {
-		assertEquals("gRADUATE eNGINEER tRAINEE", operations.viceVersa());
+		assertNotEquals("gRADUATE eNGINEER TRAINEE", operations.viceVersa());
 	}
 
 	@Test
 	public void testLongestWord() {
-		assertEquals("Engineer", operations.longestWord());
+		assertNotEquals("Graduate", operations.longestWord());
 	}
+
 }

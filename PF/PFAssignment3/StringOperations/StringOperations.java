@@ -12,6 +12,9 @@ public class StringOperations {
 	private String operatedString;
 
 	public StringOperations(String operatedString) {
+		if (operatedString.isEmpty()) {
+			throw new NullPointerException("String is Empty");
+		}
 		this.operatedString = operatedString;
 	}
 
@@ -76,19 +79,24 @@ public class StringOperations {
 	 * @return
 	 */
 	public String longestWord() {
-		ArrayList<Integer> wordCount = new ArrayList<Integer>();
-		ArrayList<String> wordInString = new ArrayList<String>();
+		String longestWord = "";
+		int maxCharacterCount = 0;
 		int characterCount = 0;
 		String wordTaker = "";
 		for (int i = 0; i < operatedString.length(); i++) {
 			if ((char) operatedString.charAt(i) == ' ' || i == operatedString.length() - 1) {
 				if (i == operatedString.length() - 1) {
-					wordCount.add(characterCount + 1);
-					wordTaker = wordTaker + operatedString.charAt(operatedString.length() - 1);
-					wordInString.add(wordTaker);
+					characterCount++;
+					wordTaker = wordTaker + operatedString.charAt(i);
+					if (characterCount >= maxCharacterCount) {
+						longestWord = new String(wordTaker);
+						maxCharacterCount = characterCount;
+					}
 				} else {
-					wordCount.add(characterCount);
-					wordInString.add(wordTaker);
+					if (characterCount >= maxCharacterCount) {
+						longestWord = new String(wordTaker);
+						maxCharacterCount = characterCount;
+					}
 				}
 				characterCount = 0;
 				wordTaker = "";
@@ -97,14 +105,6 @@ public class StringOperations {
 				wordTaker = wordTaker + operatedString.charAt(i);
 			}
 		}
-		int max = 0;
-		int index = -1;
-		for (int i = wordCount.size() - 1; i >= 0; i--) {
-			if (max < wordCount.get(i)) {
-				max = wordCount.get(i);
-				index = i;
-			}
-		}
-		return wordInString.get(index);
+		return longestWord;
 	}
 }

@@ -14,11 +14,20 @@ public class Marksheet {
 	DecimalFormat decimalFormatSpecifier = new DecimalFormat(".##");
 
 	public Marksheet(int noOfStudents, double[] gradesInput) {
+		if (noOfStudents == 0) {
+			throw new AssertionError("No Of Students can't be Zero");
+		}
 		this.noOfStudents = noOfStudents;
 		gradesOfStudents = new double[noOfStudents];
 		for (int i = 0; i < noOfStudents; i++) {
-			gradesOfStudents = gradesInput;
+			if (gradesInput[i] >= 0 && gradesInput[i] <= 100) {
+				continue;
+			} else {
+				throw new AssertionError("Enter Grades in 0 to 100 range only");
+			}
 		}
+		gradesOfStudents = gradesInput;
+
 	}
 
 	/**

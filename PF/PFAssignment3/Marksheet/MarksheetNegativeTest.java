@@ -5,8 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MarksheetTest {
-
+public class MarksheetNegativeTest {
 	Marksheet marksheet;
 
 	@Before
@@ -16,22 +15,22 @@ public class MarksheetTest {
 
 	@Test
 	public void testAverageOfGrades() {
-		assertEquals(58.35, marksheet.averageOfGrades(), 0);
+		assertNotEquals(34.2, marksheet.averageOfGrades(), 0);
 	}
 
 	@Test
 	public void testMaximumGrade() {
-		assertEquals(97.55, marksheet.maximumGrade(), 0);
+		assertNotEquals(97.51, marksheet.maximumGrade(), 0);
 	}
 
 	@Test
 	public void testMinimumGrade() {
-		assertEquals(23.45, marksheet.minimumGrade(), 0);
+		assertNotEquals(43.21, marksheet.minimumGrade(), 0);
 	}
 
 	@Test
 	public void testPercentOfPassedStudents() {
-		assertEquals(60.0, marksheet.percentOfPassedStudents(), 0);
+		assertNotEquals(23.21, marksheet.percentOfPassedStudents(), 0);
 	}
 
 }
