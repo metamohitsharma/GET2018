@@ -1,4 +1,4 @@
-package ShoppingCart;
+package GET2018.PF.PFAssignment1.ShoppingCart;
 
 /**
  * This Interface offers Promotion
@@ -11,7 +11,8 @@ public interface Promotion {
 	 * Promotional Code are valid between startDate and endDate
 	 */
 	enum PromotionEnum {
-	GET15("GET15", "1/07/2018", "31/07/2018"), FREE05("FREE05", "1/07/2018", "20/07/2018");
+		GET15("GET15", "1/07/2018", "31/07/2018"), FREE05("FREE05",
+				"1/07/2018", "20/07/2018");
 		String code;
 		String startDate;
 		String endDate;
@@ -46,7 +47,8 @@ public interface Promotion {
 	/**
 	 * This Method checks whether the entered Promotional Code is Valid or not
 	 * 
-	 * @param enteredPromocode, the Promocode entered
+	 * @param enteredPromocode
+	 *            , the Promocode entered
 	 * @return true if the Promocode is Valid
 	 */
 	boolean isPromotionApplicable(String enteredPromocode);

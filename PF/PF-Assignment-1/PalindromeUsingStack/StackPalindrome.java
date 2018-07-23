@@ -1,4 +1,4 @@
-package StackPalindrome;
+package GET2018.PF.PFAssignment1.PalindromeUsingStack;
 
 import java.util.Scanner;
 
@@ -21,8 +21,8 @@ public class StackPalindrome {
 	}
 
 	/**
-	 * This method checks whether the String is palindrome or not param@ inputString
-	 * return reverseString, reversed string of the entered string
+	 * This method checks whether the String is palindrome or not param@
+	 * inputString return reverseString, reversed string of the entered string
 	 **/
 	public static String palindrome(String inputString) {
 		StackArray stackArray = new StackArray();

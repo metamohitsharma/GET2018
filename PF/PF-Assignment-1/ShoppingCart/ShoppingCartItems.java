@@ -1,15 +1,16 @@
-package ShoppingCart;
+package GET2018.PF.PFAssignment1.ShoppingCart;
 
 /**
- * It is used to describe the properties of products
+ * This class describes the properties of Shopping Cart Items
  * 
  * @author Mohit Sharma
  */
-public class ItemsList {
+public class ShoppingCartItems {
 	String itemName;
+	int itemID;
 	int quantity;
 	double price;
-	int itemID;
+	static double totalAmount;
 
 	public String getItemName() {
 		return itemName;
@@ -25,6 +26,10 @@ public class ItemsList {
 
 	public int getQuantity() {
 		return quantity;
+	}
+
+	public static double getTotalAmount() {
+		return totalAmount;
 	}
 
 	public void setItemName(String itemName) {
@@ -43,7 +48,12 @@ public class ItemsList {
 		this.quantity = quantity;
 	}
 
-	public ItemsList(String itemName, int itemID, int quantity, double price) {
+	public static void setTotalAmount(double totalAmount) {
+		ShoppingCartItems.totalAmount = totalAmount;
+	}
+
+	public ShoppingCartItems(String itemName, int itemID, int quantity,
+			double price) {
 		this.itemName = itemName;
 		this.itemID = itemID;
 		this.quantity = quantity;

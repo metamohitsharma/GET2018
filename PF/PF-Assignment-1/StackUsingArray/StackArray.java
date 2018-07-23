@@ -1,4 +1,4 @@
-package StackArray;
+package GET2018.PF.PFAssignment1.StackUsingArray;
 
 /**
  * This class describes the implementation of Stack using array.
@@ -14,11 +14,14 @@ public class StackArray {
 	/**
 	 * Push the given element to Stack
 	 * 
-	 * @param new_element to be pushed to Stack
+	 * @param new_element
+	 *            to be pushed to Stack
 	 * @return true if new_element is pushed to Stack
-	 * @throws StackException, if the Stack Overflows
+	 * @throws StackException
+	 *             , if the Stack Overflows
 	 */
-	public boolean push(String newElement) throws ArrayIndexOutOfBoundsException {
+	public boolean push(String newElement)
+			throws ArrayIndexOutOfBoundsException {
 		try {
 			if (topElement == STACK_SIZE) {
 				throw new ArrayIndexOutOfBoundsException("Stack Overflow");
@@ -36,7 +39,8 @@ public class StackArray {
 	 * Pop the Top Element in Stack
 	 * 
 	 * @return Popped Element from Stack
-	 * @throws StackException, if the Stack Underflows
+	 * @throws StackException
+	 *             , if the Stack Underflows
 	 */
 	public String pop() throws ArrayIndexOutOfBoundsException {
 		try {
@@ -67,7 +71,8 @@ public class StackArray {
 	 * It returns the Top Element of Stack
 	 * 
 	 * @return Top Element Stored at Stack
-	 * @throws StackException, if Stack Underflows
+	 * @throws StackException
+	 *             , if Stack Underflows
 	 */
 	public String top() throws ArrayIndexOutOfBoundsException {
 		try {

@@ -1,4 +1,4 @@
-package StackPalindrome;
+package GET2018.PF.PFAssignment1.PalindromeUsingStack;
 
 /**
  * This class describes the implementation of Stack using array.
@@ -58,7 +58,8 @@ public class StackArray {
 	 * It returns the Top Element of Stack
 	 * 
 	 * @return Top Element Stored at Stack
-	 * @throws StackException, if Stack Underflows
+	 * @throws StackException
+	 *             , if Stack Underflows
 	 */
 	public char top() throws ArrayIndexOutOfBoundsException {
 		if (topElement == -1) {

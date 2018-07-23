@@ -1,4 +1,4 @@
-package ShoppingCart;
+package GET2018.PF.PFAssignment1.ShoppingCart;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -8,14 +8,26 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * This Class offers Promotion based on Total Quantity of all Products
+ * This Class offers Promotion based on Total Amount to be paid
  * 
  * @author Mohit Sharma
  */
-public class FixedProductPromotion implements Promotion {
+public class FixedOrderPromotion implements Promotion {
 	double fixedDiscount;
 	double minPrice;
-	int minQuantity;
+	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+	Date date = new Date();
+	String getDate = sdf.format(date);
+
+	@Override
+	public double getMinimumPrice() {
+		return minPrice;
+	}
+
+	@Override
+	public void setMinimumPrice() {
+		minPrice = 2000;
+	}
 
 	@Override
 	public double getFixedDiscount() {
@@ -23,8 +35,8 @@ public class FixedProductPromotion implements Promotion {
 	}
 
 	@Override
-	public double getMinimumPrice() {
-		return minPrice;
+	public void setFixedDiscount() {
+		fixedDiscount = 0.15;
 	}
 
 	@Override
@@ -36,34 +48,20 @@ public class FixedProductPromotion implements Promotion {
 				String purchaseDate = dateFormat.format(date);
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 				try {
-					if (sdf.parse(promo.getStartDate()).before(sdf.parse(purchaseDate))) {
-						if (sdf.parse(purchaseDate).before(sdf.parse(promo.getEndDate()))) {
+					if (sdf.parse(promo.getStartDate()).before(
+							sdf.parse(purchaseDate))) {
+						if (sdf.parse(purchaseDate).before(
+								sdf.parse(promo.getEndDate()))) {
 							setFixedDiscount();
 							return true;
 						}
 					}
 				} catch (ParseException ex) {
-					Logger.getLogger(FixedOrderPromotion.class.getName()).log(Level.SEVERE, null, ex);
+					Logger.getLogger(FixedOrderPromotion.class.getName()).log(
+							Level.SEVERE, null, ex);
 				}
 			}
 		}
 		return false;
-	}
-
-	@Override
-	public void setFixedDiscount() {
-		fixedDiscount = 0.15;
-	}
-
-	@Override
-	public void setMinimumPrice() {
-	}
-
-	public int getMinQuantity() {
-		return minQuantity;
-	}
-
-	public void setMinQuantity() {
-		minQuantity = 20;
 	}
 }

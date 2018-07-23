@@ -1,44 +1,42 @@
-package StackArray;
+package GET2018.PF.PFAssignment1.StackUsingLinkedList;
 
 import java.util.Scanner;
 
 /**
- * It contains the main method which implements the StackArray class
+ * It contains the main method that implements Stack using Linked List
  * 
  * @author Mohit Sharma
  *
  */
 public class Implementation {
-	/**
-	 * It is the main method of the Program, it implements Stack using Array
-	 * 
-	 * @param args command line argument
-	 */
 	public static void main(String[] args) {
-		StackArray stackArray = new StackArray();
+		StackLinkedList stackLinkedList = new StackLinkedList();
 		boolean status;
 		while (true) {
-			System.out.println("Choose any Operation:\n1. Push Element\n2. Pop Element\n"
-					+ "3. Check whether Stack is empty or not\n4. Topmost Element\n5. Exit");
+			System.out
+					.println("Choose any Operation:\n1. Push Element\n2. Pop Element\n"
+							+ "3. Check whether Stack is empty or not\n4. Topmost Element\n5. Exit");
 			String operation = new Scanner(System.in).nextLine();
 			switch (operation) {
 			case "1":
-
 				System.out.println("Enter the Element to be addded");
 				String enteredElement = new Scanner(System.in).nextLine();
-				status = stackArray.push(enteredElement);
+				status = stackLinkedList.push(enteredElement);
 				if (status) {
 					System.out.println("Element Entered");
 				}
 				break;
 
 			case "2":
-				String deletedElement = stackArray.pop();
+				String deletedElement = stackLinkedList.pop();
+				if (("false").equals(deletedElement)) {
+					continue;
+				}
 				System.out.println("Deleted Element:- " + deletedElement);
 				break;
 
 			case "3":
-				status = stackArray.isEmpty();
+				status = stackLinkedList.isEmpty();
 				if (status) {
 					System.out.println("Stack is Empty");
 				} else {
@@ -47,7 +45,10 @@ public class Implementation {
 				break;
 
 			case "4":
-				String topElement = stackArray.top();
+				String topElement = stackLinkedList.top();
+				if (("false").equals(topElement)) {
+					continue;
+				}
 				System.out.println("Topmost Element:- " + topElement);
 				break;
 

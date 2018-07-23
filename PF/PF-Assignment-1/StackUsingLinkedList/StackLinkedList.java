@@ -1,4 +1,4 @@
-package StackLinkedList;
+package GET2018.PF.PFAssignment1.StackUsingLinkedList;
 
 import java.util.LinkedList;
 
@@ -16,11 +16,14 @@ public class StackLinkedList {
 	/**
 	 * It pushes the given element to Stack
 	 * 
-	 * @param new_element, the element to be entered
+	 * @param new_element
+	 *            , the element to be entered
 	 * @return true if the element is pushed to stack
-	 * @throws StackException, when Stack Overflows
+	 * @throws StackException
+	 *             , when Stack Overflows
 	 */
-	public boolean push(String newElement) throws ArrayIndexOutOfBoundsException {
+	public boolean push(String newElement)
+			throws ArrayIndexOutOfBoundsException {
 		try {
 			if (topElement == STACK_SIZE) {
 				throw new ArrayIndexOutOfBoundsException("Stack Overflow");
@@ -38,7 +41,8 @@ public class StackLinkedList {
 	 * It pops topmost element of Stack
 	 * 
 	 * @return the popped element
-	 * @throws StackException, if Stack Underflows
+	 * @throws StackException
+	 *             , if Stack Underflows
 	 */
 	public String pop() throws ArrayIndexOutOfBoundsException {
 		try {
@@ -68,7 +72,8 @@ public class StackLinkedList {
 	 * It returns the Topmost Element of Stack
 	 * 
 	 * @return top element of Stack
-	 * @throws StackException, if Stack Underflows
+	 * @throws StackException
+	 *             , if Stack Underflows
 	 */
 	public String top() throws ArrayIndexOutOfBoundsException {
 		try {

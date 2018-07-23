@@ -1,4 +1,4 @@
-package ShoppingCart;
+package GET2018.PF.PFAssignment1.ShoppingCart;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -19,8 +19,8 @@ public class ShoppingCart {
 		list.add(new ItemsList("HP Keyboard", 444, 25, 10600));
 		list.add(new ItemsList("HP Mouse", 1423, 50, 760));
 		while (true) {
-			System.out.println(
-					"Choose any Operation:-\n1. Add Item\n2. Update List\n3. Display Cart\n4. Generate Bill\n5. Exit");
+			System.out
+					.println("Choose any Operation:-\n1. Add Item\n2. Update List\n3. Display Cart\n4. Generate Bill\n5. Exit");
 			String operation = new Scanner(System.in).nextLine();
 			switch (operation) {
 			case "1":
@@ -38,8 +38,10 @@ public class ShoppingCart {
 				System.out.println("Item ID\tItem Name\tQuantity\tPrice");
 				for (int i = 0; i < cart.size(); i++) {
 					ShoppingCartItems cartList = cart.get(i);
-					System.out.println(cartList.getItemID() + "\t" + cartList.getItemName() + "\t"
-							+ cartList.getQuantity() + "\t\t" + cartList.getPrice());
+					System.out.println(cartList.getItemID() + "\t"
+							+ cartList.getItemName() + "\t"
+							+ cartList.getQuantity() + "\t\t"
+							+ cartList.getPrice());
 				}
 				break;
 
@@ -52,15 +54,19 @@ public class ShoppingCart {
 					ShoppingCartItems cartList = cart.get(i);
 					totalPrice = totalPrice + cartList.getPrice();
 					totalQuantity = totalQuantity + cartList.getQuantity();
-					System.out.println(cartList.getItemID() + "\t" + cartList.getItemName() + "\t\t"
-							+ cartList.getQuantity() + "\t" + cartList.getPrice());
+					System.out.println(cartList.getItemID() + "\t"
+							+ cartList.getItemName() + "\t\t"
+							+ cartList.getQuantity() + "\t"
+							+ cartList.getPrice());
 				}
 				System.out.println("Total Price:- \t\t\t\t" + totalPrice);
 				System.out.println("Enter Promocode to avail Discount :-");
 				String promocode = new Scanner(System.in).nextLine();
-				discount = ShoppingCart.Discount(promocode, totalPrice, totalQuantity);
-				System.out
-						.println("*****************" + "\nAmount to be paid:- " + (totalPrice - discount * totalPrice));
+				discount = ShoppingCart.Discount(promocode, totalPrice,
+						totalQuantity);
+				System.out.println("*****************"
+						+ "\nAmount to be paid:- "
+						+ (totalPrice - discount * totalPrice));
 				break;
 
 			case "5":
@@ -84,7 +90,8 @@ public class ShoppingCart {
 		System.out.println("Item ID\tItem Name\tQuantity\tPrice");
 		for (int i = 0; i < list.size(); i++) {
 			ItemsList ItemsList = list.get(i);
-			System.out.println(ItemsList.getItemID() + "\t" + ItemsList.getItemID() + "\t" + ItemsList.getQuantity()
+			System.out.println(ItemsList.getItemID() + "\t"
+					+ ItemsList.getItemID() + "\t" + ItemsList.getQuantity()
 					+ "\t\t" + ItemsList.getPrice());
 		}
 		System.out.println("Enter Item ID to add in Shopping Cart");
@@ -101,9 +108,10 @@ public class ShoppingCart {
 			}
 			if (AddedItem.getItemID() == itemID) {
 				if (quantity <= AddedItem.getQuantity()) {
-					cart.add(new ShoppingCartItems(AddedItem.getItemName(), itemID, quantity,
-							AddedItem.getPrice() * quantity));
-					list.get(iteration).setQuantity(AddedItem.getQuantity() - quantity);
+					cart.add(new ShoppingCartItems(AddedItem.getItemName(),
+							itemID, quantity, AddedItem.getPrice() * quantity));
+					list.get(iteration).setQuantity(
+							AddedItem.getQuantity() - quantity);
 					return true;
 				} else {
 					System.out.println("Requested Quantity Not Available");
@@ -130,7 +138,8 @@ public class ShoppingCart {
 			System.out.println("Item ID\tItem Name\tQuantity\tPrice");
 			for (int i = 0; i < cart.size(); i++) {
 				ShoppingCartItems cartList = cart.get(i);
-				System.out.println(cartList.getItemID() + "\t" + cartList.getItemName() + "\t\t"
+				System.out.println(cartList.getItemID() + "\t"
+						+ cartList.getItemName() + "\t\t"
 						+ cartList.getQuantity() + "\t" + cartList.getPrice());
 			}
 			System.out.println("Enter Item ID to be updated");
@@ -151,13 +160,17 @@ public class ShoppingCart {
 			ItemsList Item = list.get(iteration);
 			if (updatedItemQuantity == 0) {
 				cart.remove(iteration2);
-				list.get(iteration).setQuantity(Item.getQuantity() + UpdatedItem.getQuantity());
+				list.get(iteration).setQuantity(
+						Item.getQuantity() + UpdatedItem.getQuantity());
 			} else {
-				if (updatedItemQuantity <= Item.getQuantity() + UpdatedItem.getQuantity()) {
-					list.get(iteration)
-							.setQuantity(Item.getQuantity() + UpdatedItem.getQuantity() - updatedItemQuantity);
+				if (updatedItemQuantity <= Item.getQuantity()
+						+ UpdatedItem.getQuantity()) {
+					list.get(iteration).setQuantity(
+							Item.getQuantity() + UpdatedItem.getQuantity()
+									- updatedItemQuantity);
 					cart.get(iteration2).setQuantity(updatedItemQuantity);
-					cart.get(iteration2).setPrice(updatedItemQuantity * Item.getPrice());
+					cart.get(iteration2).setPrice(
+							updatedItemQuantity * Item.getPrice());
 				} else {
 					System.out.println("Requested Quantity Not Available");
 				}
@@ -175,7 +188,8 @@ public class ShoppingCart {
 	 * @param totalQuantity
 	 * @return discount given on the basis of Promotional Code
 	 */
-	static double Discount(String enteredPromocode, double totalPrice, int totalQuantity) {
+	static double Discount(String enteredPromocode, double totalPrice,
+			int totalQuantity) {
 		FixedOrderPromotion fixedOrderPromotion = new FixedOrderPromotion();
 		FixedProductPromotion fixedProductPromotion = new FixedProductPromotion();
 		if (fixedOrderPromotion.isPromotionApplicable(enteredPromocode)) {
@@ -186,7 +200,8 @@ public class ShoppingCart {
 				System.out.println("Promocode Applied");
 				return fixedProductPromotion.getFixedDiscount();
 			} else {
-				System.out.println("The Cart doesnot meet the requirements to avail discount");
+				System.out
+						.println("The Cart doesnot meet the requirements to avail discount");
 				return 0;
 			}
 		} else {
