@@ -9,7 +9,7 @@ public class HexCalc {
 	String hexaDecimal;
 
 	public HexCalc(String hexaDecimal) {
-		if (hexaDecimal.equals(null)) {
+		if (hexaDecimal == null) {
 			throw new NullPointerException("HexaDecimal No is Null");
 		}
 		this.hexaDecimal = hexaDecimal;
@@ -22,8 +22,8 @@ public class HexCalc {
 	 * @return addition of Hexadecimal Numbers
 	 */
 	String addHexaDecimal(HexCalc hexaCalc) {
-		if (hexaCalc.equals(null)) {
-			throw new NullPointerException("HexaDecimal No is Null");
+		if (hexaCalc == null) {
+			throw new NullPointerException("HexaDecimal No is Null in Addition");
 		}
 		int addResult = hexa2Decimal(hexaDecimal)
 				+ hexa2Decimal(hexaCalc.hexaDecimal);
@@ -37,8 +37,9 @@ public class HexCalc {
 	 * @return subtraction of Hexadecimal Numbers
 	 */
 	String subtractHexaDecimal(HexCalc hexaCalc) {
-		if (hexaCalc.equals(null)) {
-			throw new NullPointerException("HexaDecimal No is Null");
+		if (hexaCalc == null) {
+			throw new NullPointerException(
+					"HexaDecimal No is Null in Subtraction");
 		}
 		if (hexa2Decimal(hexaDecimal) > hexa2Decimal(hexaCalc.hexaDecimal)) {
 			int subtractResult = hexa2Decimal(hexaDecimal)
@@ -55,8 +56,9 @@ public class HexCalc {
 	 * @return multiplication of Hexadecimal Numbers
 	 */
 	String multiplyHexaDecimal(HexCalc hexaCalc) {
-		if (hexaCalc.equals(null)) {
-			throw new NullPointerException("HexaDecimal No is Null");
+		if (hexaCalc == null) {
+			throw new NullPointerException(
+					"HexaDecimal No is Null in Multiplication");
 		}
 		int multiplyResult = hexa2Decimal(hexaDecimal)
 				* hexa2Decimal(hexaCalc.hexaDecimal);
@@ -70,11 +72,12 @@ public class HexCalc {
 	 * @return division of Hexadecimal Numbers
 	 */
 	String divisionHexaDecimal(HexCalc hexaCalc) {
-		if (hexaCalc.equals(null)) {
-			throw new NullPointerException("HexaDecimal No is Null");
+		if (hexaCalc == null) {
+			throw new NullPointerException("HexaDecimal No is Null in Division");
 		}
 		if (hexa2Decimal(hexaCalc.hexaDecimal) == 0) {
-			throw new ArithmeticException("/ by Zero is not Allowed");
+			throw new ArithmeticException(
+					"/ by Zero is not Allowed in Division");
 		}
 		int secondNo = hexa2Decimal(hexaCalc.hexaDecimal);
 		int divisionResult = hexa2Decimal(hexaDecimal) / secondNo;
@@ -115,8 +118,9 @@ public class HexCalc {
 	 * @return
 	 */
 	boolean isGreaterThan(HexCalc hexaDecimal2) {
-		if (hexaDecimal2.equals(null)) {
-			throw new NullPointerException("HexaDecimal No is Null");
+		if (hexaDecimal2 == null) {
+			throw new NullPointerException(
+					"HexaDecimal No is Null in Greater than");
 		}
 		String digits = "0123456789ABCDEF";
 		hexaDecimal = hexaDecimal.replaceFirst("^0*", "");
@@ -144,8 +148,8 @@ public class HexCalc {
 	 * @return
 	 */
 	boolean isEqualTo(HexCalc hexaDecimal2) {
-		if (hexaDecimal2.equals(null)) {
-			throw new NullPointerException("HexaDecimal No is Null");
+		if (hexaDecimal2 == null) {
+			throw new NullPointerException("HexaDecimal No is Null in Equal to");
 		}
 		String digits = "0123456789ABCDEF";
 		hexaDecimal = hexaDecimal.replaceFirst("^0*", "");
@@ -169,8 +173,9 @@ public class HexCalc {
 	 * @return
 	 */
 	boolean isLessThan(HexCalc hexaDecimal2) {
-		if (hexaDecimal2.equals(null)) {
-			throw new NullPointerException("HexaDecimal No is Null");
+		if (hexaDecimal2 == null) {
+			throw new NullPointerException(
+					"HexaDecimal No is Null in Less Than");
 		}
 		String digits = "0123456789ABCDEF";
 		hexaDecimal = hexaDecimal.replaceFirst("^0*", "");

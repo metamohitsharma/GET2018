@@ -52,62 +52,109 @@ public class HexCalcTest {
 		assertFalse(hexaCalculator1.isEqualTo(hexaCalculator2));
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test
 	public void intializeWithNullTest() {
-		hexaCalculator1 = new HexCalc(null);
+		try {
+			hexaCalculator1 = new HexCalc(null);
+		} catch (NullPointerException e) {
+			assertEquals("HexaDecimal No is Null", e.getMessage());
+		}
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test
 	public void addtionHexCalcWithNullPointer() {
-		hexaCalculator1.addHexaDecimal(null);
+		try {
+			hexaCalculator1.addHexaDecimal(null);
+		} catch (NullPointerException e) {
+			assertEquals("HexaDecimal No is Null in Addition", e.getMessage());
+		}
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test
 	public void subtractionHexCalcWithNullPointer() {
-		hexaCalculator1.subtractHexaDecimal(null);
+		try {
+			hexaCalculator1.subtractHexaDecimal(null);
+		} catch (NullPointerException e) {
+			assertEquals("HexaDecimal No is Null in Subtraction",
+					e.getMessage());
+		}
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test
 	public void mulitplicationHexCalcWithNullPointer() {
-		hexaCalculator1.multiplyHexaDecimal(null);
+		try {
+			hexaCalculator1.multiplyHexaDecimal(null);
+		} catch (NullPointerException e) {
+			assertEquals("HexaDecimal No is Null in Multiplication",
+					e.getMessage());
+		}
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test
 	public void divisionHexCalcWithNullPointer() {
-		hexaCalculator1.divisionHexaDecimal(null);
+		try {
+			hexaCalculator1.divisionHexaDecimal(null);
+		} catch (NullPointerException e) {
+			assertEquals("HexaDecimal No is Null in Division", e.getMessage());
+		}
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test
 	public void isGreaterHexCalcWithNullPointer() {
-		hexaCalculator1.isGreaterThan(null);
+		try {
+			hexaCalculator1.isGreaterThan(null);
+		} catch (NullPointerException e) {
+			assertEquals("HexaDecimal No is Null in Greater than",
+					e.getMessage());
+		}
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test
 	public void isLessHexCalcWithNullPointer() {
-		hexaCalculator1.isLessThan(null);
+		try {
+			hexaCalculator1.isLessThan(null);
+		} catch (NullPointerException e) {
+			assertEquals("HexaDecimal No is Null in Less Than", e.getMessage());
+		}
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test
 	public void isEqualHexCalcWithNullPointer() {
-		hexaCalculator1.isEqualTo(null);
+		try {
+			hexaCalculator1.isEqualTo(null);
+		} catch (NullPointerException e) {
+			assertEquals("HexaDecimal No is Null in Equal to", e.getMessage());
+		}
 	}
 
-	@Test(expected = ArithmeticException.class)
+	@Test
 	public void divisionHexCalcWithSecondNumberZero() {
-		hexaCalculator2 = new HexCalc("0");
-		hexaCalculator1.divisionHexaDecimal(hexaCalculator2);
+		try {
+			hexaCalculator2 = new HexCalc("0");
+			hexaCalculator1.divisionHexaDecimal(hexaCalculator2);
+		} catch (ArithmeticException e) {
+			assertEquals("/ by Zero is not Allowed in Division", e.getMessage());
+		}
 	}
 
-	@Test(expected = NumberFormatException.class)
+	@Test
 	public void additionHexCalcWithSingleInvalidInput() {
-		hexaCalculator1 = new HexCalc("45GH");
-		hexaCalculator1.addHexaDecimal(hexaCalculator2);
+		try {
+			hexaCalculator1 = new HexCalc("45GH");
+			hexaCalculator1.addHexaDecimal(hexaCalculator2);
+		} catch (NumberFormatException e) {
+			assertEquals("HexaDecimal No Invalid", e.getMessage());
+		}
 	}
 
-	@Test(expected = NumberFormatException.class)
+	@Test
 	public void additionHexCalcWithBothInvalidInput() {
-		hexaCalculator1 = new HexCalc("45GH!");
-		hexaCalculator2 = new HexCalc("7-l'");
-		hexaCalculator1.addHexaDecimal(hexaCalculator2);
+		try {
+			hexaCalculator1 = new HexCalc("45GH!");
+			hexaCalculator2 = new HexCalc("7-l'");
+			hexaCalculator1.addHexaDecimal(hexaCalculator2);
+		} catch (NumberFormatException e) {
+			assertEquals("HexaDecimal No Invalid", e.getMessage());
+		}
 	}
 }

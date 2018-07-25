@@ -18,11 +18,12 @@ public class JobScheduler {
 	int noOfProcess = 0;
 	double avgWaitingTime;
 
-	public JobScheduler(int noOfProcess, int[][] processInput) {
+	public JobScheduler(int noOfProcess, int[][] processInput)
+			throws JobSchedulerException {
 		if (noOfProcess == 0) {
-			throw new AssertionError("No Of Processes can't be Zero");
+			throw new JobSchedulerException("No Of Processes can't be Zero");
 		}
-		if (processInput.equals(null)) {
+		if (processInput == null) {
 			throw new NullPointerException(
 					"Process Arrival time and Burst Time can't be Null");
 		}
@@ -30,7 +31,7 @@ public class JobScheduler {
 		for (int i = 0; i < processInput.length; i++) {
 			for (int j = 0; j < processInput[0].length; j++) {
 				if (processInput[i][j] < 0) {
-					throw new AssertionError(
+					throw new JobSchedulerException(
 							"Arrival Time or Burst Time can't be Negative");
 				}
 			}
@@ -117,5 +118,18 @@ public class JobScheduler {
 			}
 		}
 		return maximumWaitingTime;
+	}
+
+	@SuppressWarnings("serial")
+	class JobSchedulerException extends Exception {
+		String messageException;
+
+		public JobSchedulerException(String messageException) {
+			this.messageException = messageException;
+		}
+
+		public String getMessageException() {
+			return messageException;
+		}
 	}
 }

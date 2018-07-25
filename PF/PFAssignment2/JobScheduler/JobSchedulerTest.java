@@ -5,11 +5,13 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import GET2018.PF.PFAssignment2.JobScheduler.JobScheduler.JobSchedulerException;
+
 public class JobSchedulerTest {
 	static JobScheduler fcfs;
 
 	@BeforeClass
-	static public void init() {
+	static public void init() throws JobSchedulerException {
 		fcfs = new JobScheduler(3, new int[][] { { 0, 5 }, { 3, 9 }, { 6, 6 } });
 	}
 
@@ -47,19 +49,35 @@ public class JobSchedulerTest {
 		assertArrayEquals(new int[] { 0, 2, 8 }, fcfs.calWaitingTime());
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test
 	public void initializeWithInvalidInputs() {
-		fcfs = new JobScheduler(0, new int[][] { { 0, 5 }, { 3, 9 }, { 6, 6 } });
+		try {
+			fcfs = new JobScheduler(0, new int[][] { { 0, 5 }, { 3, 9 },
+					{ 6, 6 } });
+		} catch (JobSchedulerException ex) {
+			assertEquals("No Of Processes can't be Zero",
+					ex.getMessageException());
+		}
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test
 	public void initializeWithNull() {
-		fcfs = new JobScheduler(3, null);
+		try {
+			fcfs = new JobScheduler(3, null);
+		} catch (Exception ex) {
+			assertEquals("Process Arrival time and Burst Time can't be Null",
+					ex.getMessage());
+		}
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test
 	public void initializeWithNegativeValues() {
-		fcfs = new JobScheduler(3, new int[][] { { 0, -5 }, { -3, 9 },
-				{ -6, 6 } });
+		try {
+			fcfs = new JobScheduler(3, new int[][] { { 0, -5 }, { -3, 9 },
+					{ -6, 6 } });
+		} catch (JobSchedulerException ex) {
+			assertEquals("Arrival Time or Burst Time can't be Negative",
+					ex.getMessageException());
+		}
 	}
 }
