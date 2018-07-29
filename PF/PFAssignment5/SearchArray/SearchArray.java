@@ -9,18 +9,20 @@ package GET2018.PF.PFAssignment5.SearchArray;
 public class SearchArray {
 
 	/**
-	 * Search using Linear Search Returns the index of Element if found otherwise
+	 * Search using Binary Search Returns the index of Element if found otherwise
 	 * returns -1
 	 * 
-	 * @param sortedArray
-	 * @param startIndex
-	 * @param endIndex
+	 * @param arrayToSearch
+	 * @param index
 	 * @param elementToSearch
 	 * @return
+	 * @throws SearchException
 	 */
-	int binarySearch(int[] sortedArray, int startIndex, int endIndex, int elementToSearch) {
-		if (sortedArray.length == 0) {
-			throw new AssertionError("Input Array is Empty");
+	int binarySearch(int[] sortedArray, int startIndex, int endIndex, int elementToSearch) throws SearchException {
+		if (sortedArray == null) {
+			throw new NullPointerException("Entered Array is Null in BinarySearch");
+		} else if (sortedArray.length == 0) {
+			throw new SearchException("Input Array is Empty in BinarySearch");
 		}
 		if (startIndex < endIndex) {
 			int midIndex = startIndex + (endIndex - startIndex) / 2;
@@ -36,17 +38,21 @@ public class SearchArray {
 	}
 
 	/**
-	 * Search using Binary Search Returns the index of Element if found otherwise
+	 * Search using Linear Search Returns the index of Element if found otherwise
 	 * returns -1
 	 * 
-	 * @param arrayToSearch
-	 * @param index
+	 * @param sortedArray
+	 * @param startIndex
+	 * @param endIndex
 	 * @param elementToSearch
 	 * @return
+	 * @throws SearchException
 	 */
-	int linearSearch(int arrayToSearch[], int index, int elementToSearch) {
-		if (arrayToSearch.length == 0) {
-			throw new AssertionError("Input Array is Empty");
+	int linearSearch(int arrayToSearch[], int index, int elementToSearch) throws SearchException {
+		if (arrayToSearch == null) {
+			throw new NullPointerException("Entered Array is Null in LinearSearch");
+		} else if (arrayToSearch.length == 0) {
+			throw new SearchException("Input Array is Empty in LinearSearch");
 		}
 		if (arrayToSearch.length - 1 < index) {
 			return -1;
@@ -55,5 +61,18 @@ public class SearchArray {
 			return index;
 		}
 		return linearSearch(arrayToSearch, index + 1, elementToSearch);
+	}
+
+	@SuppressWarnings("serial")
+	static class SearchException extends Exception {
+		String messageException;
+
+		public SearchException(String messageException) {
+			this.messageException = messageException;
+		}
+
+		public String getMessageException() {
+			return messageException;
+		}
 	}
 }

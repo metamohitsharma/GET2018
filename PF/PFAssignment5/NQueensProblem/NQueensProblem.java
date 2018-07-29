@@ -15,13 +15,15 @@ public class NQueensProblem {
 	 * @param startColumn
 	 * @param dimensionOfMatrix
 	 * @return true if the solution exits otherwise false
+	 * @throws NQueensException
 	 */
-	boolean nQueen(int board[][], int startColumn, int dimensionOfMatrix) {
-		if (board.length == 0) {
-			throw new AssertionError("Array is Empty");
-		}
-		if (board.length != dimensionOfMatrix || board[0].length != dimensionOfMatrix) {
-			throw new AssertionError("Input Array not Valid");
+	boolean nQueen(int board[][], int startColumn, int dimensionOfMatrix) throws NQueensException {
+		if (board == null) {
+			throw new NullPointerException("Board Array is Null");
+		} else if (board.length == 0) {
+			throw new NQueensException("Board Array is Empty");
+		} else if (board.length != dimensionOfMatrix || board[0].length != dimensionOfMatrix) {
+			throw new NQueensException("Board Array not Valid");
 		}
 		// Base Condition for recursion of NQueen
 		if (startColumn >= dimensionOfMatrix) {
@@ -80,5 +82,18 @@ public class NQueensProblem {
 			}
 		}
 		return true;
+	}
+
+	@SuppressWarnings("serial")
+	static class NQueensException extends Exception {
+		String messageException;
+
+		public NQueensException(String messageException) {
+			this.messageException = messageException;
+		}
+
+		public String getMessageException() {
+			return messageException;
+		}
 	}
 }
