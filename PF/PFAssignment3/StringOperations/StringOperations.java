@@ -1,7 +1,5 @@
 package GET2018.PF.PFAssignment3.StringOperations;
 
-import java.util.ArrayList;
-
 /**
  * This class contains different operations applied on String
  * 
@@ -11,9 +9,11 @@ import java.util.ArrayList;
 public class StringOperations {
 	private String operatedString;
 
-	public StringOperations(String operatedString) {
-		if (operatedString.isEmpty()) {
-			throw new NullPointerException("String is Empty");
+	public StringOperations(String operatedString) throws StringException {
+		if (operatedString == null) {
+			throw new NullPointerException("String is null");
+		} else if (operatedString.length() == 0) {
+			throw new StringException("String is Empty");
 		}
 		this.operatedString = operatedString;
 	}
@@ -23,8 +23,14 @@ public class StringOperations {
 	 * 
 	 * @param checkEqualityString
 	 * @return 1 if both strings are equal otherwise 0
+	 * @throws StringException
 	 */
-	public int isEquals(String checkEqualityString) {
+	public int isEquals(String checkEqualityString) throws StringException {
+		if (checkEqualityString == null) {
+			throw new NullPointerException("isEqual String is null");
+		} else if (checkEqualityString.length() == 0) {
+			throw new StringException("isEqual String is Empty");
+		}
 		if (operatedString.length() == checkEqualityString.length()) {
 			for (int i = 0; i < operatedString.length(); i++) {
 				if (operatedString.charAt(i) != checkEqualityString.charAt(i)) {
@@ -83,6 +89,11 @@ public class StringOperations {
 		int maxCharacterCount = 0;
 		int characterCount = 0;
 		String wordTaker = "";
+
+		/*
+		 * Increasing characterCount until BlankSpace occur then comparing the
+		 * characterCount with maxCharaterCount
+		 */
 		for (int i = 0; i < operatedString.length(); i++) {
 			if ((char) operatedString.charAt(i) == ' ' || i == operatedString.length() - 1) {
 				if (i == operatedString.length() - 1) {
@@ -106,5 +117,18 @@ public class StringOperations {
 			}
 		}
 		return longestWord;
+	}
+
+	@SuppressWarnings("serial")
+	static class StringException extends Exception {
+		String messageException;
+
+		public StringException(String messageException) {
+			this.messageException = messageException;
+		}
+
+		public String getMessageException() {
+			return messageException;
+		}
 	}
 }

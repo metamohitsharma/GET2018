@@ -13,9 +13,9 @@ public class Marksheet {
 	int noOfStudents;
 	DecimalFormat decimalFormatSpecifier = new DecimalFormat(".##");
 
-	public Marksheet(int noOfStudents, double[] gradesInput) {
-		if (noOfStudents == 0) {
-			throw new AssertionError("No Of Students can't be Zero");
+	public Marksheet(int noOfStudents, double[] gradesInput) throws MarksheetException {
+		if (noOfStudents <= 0) {
+			throw new MarksheetException("No Of Students can't be Zero or Negative");
 		}
 		this.noOfStudents = noOfStudents;
 		gradesOfStudents = new double[noOfStudents];
@@ -23,11 +23,10 @@ public class Marksheet {
 			if (gradesInput[i] >= 0 && gradesInput[i] <= 100) {
 				continue;
 			} else {
-				throw new AssertionError("Enter Grades in 0 to 100 range only");
+				throw new MarksheetException("Enter Grades in 0 to 100 range only");
 			}
 		}
 		gradesOfStudents = gradesInput;
-
 	}
 
 	/**
@@ -86,5 +85,18 @@ public class Marksheet {
 			}
 		}
 		return Double.parseDouble(decimalFormatSpecifier.format((double) noOfPassedStudents / noOfStudents * 100));
+	}
+
+	@SuppressWarnings("serial")
+	static class MarksheetException extends Exception {
+		String messageException;
+
+		public MarksheetException(String messageException) {
+			this.messageException = messageException;
+		}
+
+		public String getMessageException() {
+			return messageException;
+		}
 	}
 }

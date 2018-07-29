@@ -17,13 +17,13 @@ public class AreaCalculator {
 	 * @param width
 	 * @param height
 	 * @return
+	 * @throws AreaCalculatorException
 	 */
-	double areaOfTriangle(double width, double height) {
+	double areaOfTriangle(double width, double height) throws AreaCalculatorException {
 		if (width < 0 || height < 0) {
-			throw new AssertionError("Negative Width or Height Not Allowed");
+			throw new AreaCalculatorException("Negative Width or Height Not Allowed in Triangle");
 		}
-		double area = 0.5 * width * height;
-		return Double.parseDouble(decimalFormatSpecifier.format(area));
+		return Double.parseDouble(decimalFormatSpecifier.format(0.5 * width * height));
 	}
 
 	/**
@@ -33,12 +33,11 @@ public class AreaCalculator {
 	 * @param height
 	 * @return
 	 */
-	double areaOfRectangle(double width, double height) {
+	double areaOfRectangle(double width, double height) throws AreaCalculatorException {
 		if (width < 0 || height < 0) {
-			throw new AssertionError("Negative Width or Height Not Allowed");
+			throw new AreaCalculatorException("Negative Width or Height Not Allowed in Rectangle");
 		}
-		double area = width * height;
-		return Double.parseDouble(decimalFormatSpecifier.format(area));
+		return Double.parseDouble(decimalFormatSpecifier.format(width * height));
 	}
 
 	/**
@@ -47,12 +46,11 @@ public class AreaCalculator {
 	 * @param width
 	 * @return
 	 */
-	double areaOfSquare(double width) {
+	double areaOfSquare(double width) throws AreaCalculatorException {
 		if (width < 0) {
-			throw new AssertionError("Negative Width Not Allowed");
+			throw new AreaCalculatorException("Negative Width Not Allowed in Square");
 		}
-		double area = width * width;
-		return Double.parseDouble(decimalFormatSpecifier.format(area));
+		return Double.parseDouble(decimalFormatSpecifier.format(width * width));
 	}
 
 	/**
@@ -61,11 +59,23 @@ public class AreaCalculator {
 	 * @param radius
 	 * @return
 	 */
-	double areaOfCircle(double radius) {
+	double areaOfCircle(double radius) throws AreaCalculatorException {
 		if (radius < 0) {
-			throw new AssertionError("Negative Radius Not Allowed");
+			throw new AreaCalculatorException("Negative Radius Not Allowed in Circle");
 		}
-		double area = Math.PI * radius * radius;
-		return Double.parseDouble(decimalFormatSpecifier.format(area));
+		return Double.parseDouble(decimalFormatSpecifier.format(Math.PI * radius * radius));
+	}
+
+	@SuppressWarnings("serial")
+	static class AreaCalculatorException extends Exception {
+		String messageException;
+
+		public AreaCalculatorException(String messageException) {
+			this.messageException = messageException;
+		}
+
+		public String getMessageException() {
+			return messageException;
+		}
 	}
 }
