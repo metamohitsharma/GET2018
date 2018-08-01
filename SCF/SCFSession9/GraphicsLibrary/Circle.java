@@ -49,10 +49,10 @@ public class Circle implements Shape {
 		double M = origin.getyPoint() / origin.getxPoint();
 
 		/*
-		 * y = mx so we will substitute the value of y to circle equation (x-h)2 +
-		 * (y-k)2 = r2 where (h,k) is the radius coordinate x2(m2 + 1) - 2x(mx + h) + k2
-		 * + h2 - r2 = 0 is the equation we get after substitution of y This equation is
-		 * similar to Ax2 + Bx + C = 0 so we can easily calculate roots of x by formula
+		 * y = mx so we will substitute the value of y to circle equation 
+		 * (x-h)2 + (y-k)2 = r2 where (h,k) is the radius coordinate 
+		 * x2(m2 + 1) - 2x(mx + h) + k2  + h2 - r2 = 0 is the equation we get after substitution of y
+		 *  This equation is similar to Ax2 + Bx + C = 0 so we can easily calculate roots of x by formula
 		 * of Quadratic Equation
 		 */
 		A = (Math.pow(M, 2) + 1);
