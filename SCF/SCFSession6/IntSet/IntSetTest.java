@@ -17,7 +17,7 @@ public class IntSetTest {
 
 	@Test
 	public void isMemebertest() {
-		assertEquals(true, set.isMember(100));
+		assertEquals(true, set.isMember(35));
 	}
 
 	@Test
@@ -27,14 +27,13 @@ public class IntSetTest {
 
 	@Test
 	public void getComplementtest() {
-		set.getComplement();
+		assertEquals(994, set.getComplement());
 	}
 
 	@Test
 	public void unionTest() throws SetException {
 		assertArrayEquals(new int[] { 2, 3, 4, 5, 11, 12, 13, 14 },
-				IntSet.union(new IntSet(new int[] { 2, 3, 11, 12 }),
-						new IntSet(new int[] { 2, 4, 5, 12, 14, 13 })));
+				IntSet.union(new IntSet(new int[] { 2, 3, 11, 12 }), new IntSet(new int[] { 2, 4, 5, 12, 14, 13 })));
 	}
 
 	@Test
@@ -51,8 +50,7 @@ public class IntSetTest {
 		try {
 			new IntSet(new int[] {});
 		} catch (SetException ex) {
-			assertEquals("Input Array Length can't be Zero",
-					ex.getMessageException());
+			assertEquals("Input Array Length can't be Zero", ex.getMessageException());
 		}
 	}
 
@@ -61,8 +59,7 @@ public class IntSetTest {
 		try {
 			new IntSet(new int[] { 2, 5, 43, 124, 1024, -1, 0 });
 		} catch (SetException ex) {
-			assertEquals("Input Invalid Not in Range 1-1000",
-					ex.getMessageException());
+			assertEquals("Input Invalid Not in Range 1-1000", ex.getMessageException());
 		}
 	}
 }

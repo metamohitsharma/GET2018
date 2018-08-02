@@ -21,6 +21,7 @@ public final class IntSet {
 		for (int i = 0; i < intSetRange.length; i++) {
 			intSetRange[i] = i + 1;
 		}
+		IntSet.sortArray(intSetInput);
 
 		/*
 		 * Checks Whether the values of Array are in Range 1-1000 or not
@@ -35,7 +36,6 @@ public final class IntSet {
 				throw new SetException("Input Invalid Not in Range 1-1000");
 			}
 		}
-		IntSet.sortArray(intSetInput);
 		intSet = intSetInput;
 	}
 
@@ -46,8 +46,8 @@ public final class IntSet {
 	 * @return
 	 */
 	public boolean isMember(int x) {
-		for (int i = 0; i < intSetRange.length; i++) {
-			if (x == intSetRange[i]) {
+		for (int i = 0; i < intSet.length; i++) {
+			if (x == intSet[i]) {
 				return true;
 			}
 		}
@@ -87,24 +87,24 @@ public final class IntSet {
 	/**
 	 * Return the complement set
 	 */
-	public void getComplement() {
-		int checkMembership;
+	public int getComplement() {
 		int complementSet[] = new int[1000];
 		int indexOfComplementSet = 0;
-		for (int i = 0; i < intSetRange.length; i++) {
-			for (checkMembership = 0; checkMembership < intSet.length; checkMembership++) {
-				if (intSetRange[i] == intSet[checkMembership]) {
+		for (int i = 0, j = 0; j < intSetRange.length; j++) {
+			if (i < intSet.length && intSetRange[j] != intSet[i]) {
+				complementSet[indexOfComplementSet] = intSetRange[j];
+				indexOfComplementSet++;
+			} else if (i < intSet.length && intSetRange[j] == intSet[i]) {
+				i++;
+			} else {
+				if (j < intSetRange.length) {
+					i--;
+				} else {
 					break;
 				}
 			}
-			if (checkMembership == intSet.length) {
-				complementSet[indexOfComplementSet] = intSetRange[i];
-				indexOfComplementSet++;
-			}
 		}
-		for (int x = 0; x < indexOfComplementSet; x++) {
-			System.out.println(complementSet[x]);
-		}
+		return indexOfComplementSet + 1;
 	}
 
 	/**
@@ -118,7 +118,7 @@ public final class IntSet {
 		int unionSet[] = new int[1000];
 		int unionSetInput[];
 		int indexOfUnionSet = 0;
-		int checkMembership;
+		int j;
 
 		/*
 		 * Adding all the Elements of Set1 in unionSet
@@ -132,12 +132,12 @@ public final class IntSet {
 		 * Adding Remaining Elements of Set2 that are not in Set1 to unionSet
 		 */
 		for (int i = 0; i < set2.intSet.length; i++) {
-			for (checkMembership = 0; checkMembership < indexOfUnionSet; checkMembership++) {
-				if (unionSet[checkMembership] == set2.intSet[i]) {
+			for (j = 0; j < indexOfUnionSet; j++) {
+				if (unionSet[j] == set2.intSet[i]) {
 					break;
 				}
 			}
-			if (checkMembership == indexOfUnionSet) {
+			if (j == indexOfUnionSet) {
 				unionSet[indexOfUnionSet] = set2.intSet[i];
 				indexOfUnionSet++;
 			}
