@@ -7,7 +7,7 @@ package GET2018.SCF.SCFSession7.SparseMatrix;
  *
  */
 public final class SparseMatrix {
-	final int sparseMatrix[][];
+	int sparseMatrix[][];
 	final int rows;
 	final int columns;
 
@@ -18,10 +18,14 @@ public final class SparseMatrix {
 		if (inputMatrix.length == 0) {
 			throw new SparseMatrixException("Matrix is Empty");
 		}
-		int lengthOfElements = 0;
-		int lengthOfZeroElements = 0;
 		rows = inputMatrix.length;
 		columns = inputMatrix[0].length;
+		isSparse(inputMatrix);
+	}
+
+	void isSparse(int[][] inputMatrix) throws SparseMatrixException {
+		int lengthOfElements = 0;
+		int lengthOfZeroElements = 0;
 
 		/*
 		 * Calculating No of Non-Zero Elements
@@ -57,26 +61,13 @@ public final class SparseMatrix {
 	}
 
 	/**
-	 * Initialize Matrix with Zeros
-	 * 
-	 * @param matrix
-	 */
-	static void initializeMatrixWithZero(int matrix[][]) {
-		for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix[0].length; j++) {
-				matrix[i][j] = 0;
-			}
-		}
-	}
-
-	/**
 	 * Returns the Transpose of Matrix Complexity :- O(n)
 	 * 
 	 * @return
 	 */
 	int[][] transpose() {
 		int transposeMatrix[][] = new int[columns][rows];
-		SparseMatrix.initializeMatrixWithZero(transposeMatrix);
+		transposeMatrix[0][0] = 0;
 		for (int i = 0; i < sparseMatrix.length; i++) {
 			transposeMatrix[sparseMatrix[i][1]][sparseMatrix[i][0]] = sparseMatrix[i][2];
 		}
@@ -121,7 +112,7 @@ public final class SparseMatrix {
 			throw new SparseMatrixException("No. of Rows and Columns don't match in Addtion");
 		}
 		int addMatrix[][] = new int[matrix1.rows][matrix1.columns];
-		SparseMatrix.initializeMatrixWithZero(addMatrix);
+		addMatrix[0][0] = 0;
 		int i = 0;
 		int j = 0;
 		for (; i < matrix1.sparseMatrix.length && j < matrix2.sparseMatrix.length;) {
@@ -187,7 +178,7 @@ public final class SparseMatrix {
 					"No of Columns of Matrix1 should be equal to No of Rows in Matrix2 for multiplication");
 		}
 		int multiplyMatrix[][] = new int[matrix1.rows][matrix2.columns];
-		SparseMatrix.initializeMatrixWithZero(multiplyMatrix);
+		multiplyMatrix[0][0] = 0;
 		for (int i = 0; i < matrix1.sparseMatrix.length; i++) {
 			for (int j = 0; j < matrix2.sparseMatrix.length; j++) {
 				if (matrix1.sparseMatrix[i][1] == matrix2.sparseMatrix[j][0]) {
