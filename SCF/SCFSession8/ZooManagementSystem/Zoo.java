@@ -36,14 +36,11 @@ public class Zoo {
 	 * @param hasPark
 	 * @return
 	 */
-	boolean addZone(int maxNoOfCages, String categoryOfAnimal,
-			boolean hasCanteen, boolean hasPark) {
-		if (categoryOfAnimal == null || categoryOfAnimal.length() == 0) {
-			throw new NullPointerException(
-					"Category Of Animal in Zone Can't be Null or Zero");
+	boolean addZone(int maxNoOfCages, AnimalCategory categoryOfAnimal, boolean hasCanteen, boolean hasPark) {
+		if (categoryOfAnimal == null) {
+			throw new NullPointerException("Category Of Animal in Zone Can't be Null");
 		}
-		Zone newZone = new Zone(maxNoOfCages, categoryOfAnimal, hasCanteen,
-				hasPark);
+		Zone newZone = new Zone(maxNoOfCages, categoryOfAnimal, hasCanteen, hasPark);
 		zoneList.add(newZone);
 		return true;
 	}
@@ -57,31 +54,26 @@ public class Zoo {
 	 * @return
 	 * @throws ZooException
 	 */
-	boolean addCage(String typeOfAnimal, int zoneNo, int maxNoOfAnimals)
-			throws ZooException {
-		if (typeOfAnimal == null || typeOfAnimal.length() == 0) {
-			throw new NullPointerException(
-					"Category Of Animal in Cage Can't be Null or Zero");
+	boolean addCage(AnimalType typeOfAnimal, int zoneNo, int maxNoOfAnimals) throws ZooException {
+		if (typeOfAnimal == null) {
+			throw new NullPointerException("Category Of Animal in Cage Can't be Null");
 		}
-
 		/*
-		 * Checking the TypeOfAnimal in Cage is in the Zone's Category of Animal
-		 * i.e., Checking whether we're adding Lion in Mammal Zone only
+		 * Checking the TypeOfAnimal in Cage is in the Zone's Category of Animal i.e.,
+		 * Checking whether we're adding Lion in Mammal Zone only
 		 */
-		if (typeOfAnimal.equals("Lion") || typeOfAnimal.equals("Deer")
-				|| typeOfAnimal.equals("Zebra")) {
-			if (zoneList.get(zoneNo - 1).getCategoryOfAnimal() != "Mammal") {
+		if (typeOfAnimal.equals(AnimalType.Lion) || typeOfAnimal.equals(AnimalType.Deer)
+				|| typeOfAnimal.equals(AnimalType.Zebra)) {
+			if (zoneList.get(zoneNo - 1).getCategoryOfAnimal() != AnimalCategory.Mammal) {
 				return false;
 			}
-		} else if (typeOfAnimal.equals("Parrot")
-				|| typeOfAnimal.equals("Peacook")
-				|| typeOfAnimal.equals("Raven")) {
-			if (zoneList.get(zoneNo - 1).getCategoryOfAnimal() != "Bird") {
+		} else if (typeOfAnimal.equals(AnimalType.Parrot) || typeOfAnimal.equals(AnimalType.Peacook)
+				|| typeOfAnimal.equals(AnimalType.Raven)) {
+			if (zoneList.get(zoneNo - 1).getCategoryOfAnimal() != AnimalCategory.Bird) {
 				return false;
 			}
-		} else if (typeOfAnimal.equals("Alligator")
-				|| typeOfAnimal.equals("Snake")) {
-			if (zoneList.get(zoneNo - 1).getCategoryOfAnimal() != "Reptile") {
+		} else if (typeOfAnimal.equals(AnimalType.Alligator) || typeOfAnimal.equals(AnimalType.Snake)) {
+			if (zoneList.get(zoneNo - 1).getCategoryOfAnimal() != AnimalCategory.Reptile) {
 				return false;
 			}
 		}
@@ -116,26 +108,27 @@ public class Zoo {
 	 * @return
 	 * @throws ZooException
 	 */
-	boolean addAnimal(String animalName, String typeOfAnimal, int ageOfAnimal,
-			double weightOfAnimal, int cageNo) throws ZooException {
-		if (typeOfAnimal == null || animalName == null
-				|| typeOfAnimal.length() == 0 || animalName.length() == 0) {
-			throw new NullPointerException(
-					"Category Of Animal or Name of Animal Can't be Null or Zero");
+	boolean addAnimal(String animalName, AnimalType typeOfAnimal, int ageOfAnimal, double weightOfAnimal, int cageNo)
+			throws ZooException {
+		if (animalName == null || animalName.length() == 0 || typeOfAnimal == null) {
+			throw new NullPointerException("Category Of Animal or Name of Animal Can't be Null or Zero");
+		}
+		for (int i = 0; i < animalList.size(); i++) {
+			if (animalList.get(i).getAnimalName() == animalName) {
+				throw new ZooException("Animal Name should be Unique");
+			}
 		}
 
 		/*
-		 * Checking whether Cage is full or not and the Specified Cage is of the
-		 * same TypeOfAnimal given
+		 * Checking whether Cage is full or not and the Specified Cage is of the same
+		 * TypeOfAnimal given
 		 */
 		if (typeOfAnimal == cageList.get(cageNo - 1).typeOfAnimal) {
-			if (cageList.get(cageNo - 1).getMaxNoOfAnimals() == cageList.get(
-					cageNo - 1).getNoOfAnimals()) {
+			if (cageList.get(cageNo - 1).getMaxNoOfAnimals() == cageList.get(cageNo - 1).getNoOfAnimals()) {
 				throw new ZooException("Cage is Full, Can't add more animals");
 			}
 		} else {
-			throw new ZooException(
-					"This cage is not for the given type of Animal");
+			throw new ZooException("This cage is not for the given type of Animal");
 		}
 
 		/*
@@ -143,56 +136,47 @@ public class Zoo {
 		 */
 		int noOfAnimalsInCage = cageList.get(cageNo - 1).getNoOfAnimals();
 		switch (typeOfAnimal) {
-		case "Lion":
-			animalList.add(new Lion(animalName, ageOfAnimal, weightOfAnimal,
-					cageNo));
+		case Lion:
+			animalList.add(new Lion(animalName, ageOfAnimal, weightOfAnimal, cageNo));
 			cageList.get(cageNo - 1).setNoOfAnimals(noOfAnimalsInCage++);
 			break;
 
-		case "Zebra":
-			animalList.add(new Zebra(animalName, ageOfAnimal, weightOfAnimal,
-					cageNo));
+		case Zebra:
+			animalList.add(new Zebra(animalName, ageOfAnimal, weightOfAnimal, cageNo));
 			cageList.get(cageNo - 1).setNoOfAnimals(noOfAnimalsInCage++);
 			break;
 
-		case "Deer":
-			animalList.add(new Deer(animalName, ageOfAnimal, weightOfAnimal,
-					cageNo));
+		case Deer:
+			animalList.add(new Deer(animalName, ageOfAnimal, weightOfAnimal, cageNo));
 			cageList.get(cageNo - 1).setNoOfAnimals(noOfAnimalsInCage++);
 			break;
 
-		case "Parrot":
-			animalList.add(new Parrot(animalName, ageOfAnimal, weightOfAnimal,
-					cageNo));
+		case Parrot:
+			animalList.add(new Parrot(animalName, ageOfAnimal, weightOfAnimal, cageNo));
 			cageList.get(cageNo - 1).setNoOfAnimals(noOfAnimalsInCage++);
 			break;
 
-		case "Peacook":
-			animalList.add(new Peacook(animalName, ageOfAnimal, weightOfAnimal,
-					cageNo));
+		case Peacook:
+			animalList.add(new Peacook(animalName, ageOfAnimal, weightOfAnimal, cageNo));
 			cageList.get(cageNo - 1).setNoOfAnimals(noOfAnimalsInCage++);
 			break;
 
-		case "Raven":
-			animalList.add(new Raven(animalName, ageOfAnimal, weightOfAnimal,
-					cageNo));
+		case Raven:
+			animalList.add(new Raven(animalName, ageOfAnimal, weightOfAnimal, cageNo));
 			cageList.get(cageNo - 1).setNoOfAnimals(noOfAnimalsInCage++);
 			break;
 
-		case "Alligator":
-			animalList.add(new Alligator(animalName, ageOfAnimal,
-					weightOfAnimal, cageNo));
+		case Alligator:
+			animalList.add(new Alligator(animalName, ageOfAnimal, weightOfAnimal, cageNo));
 			cageList.get(cageNo - 1).setNoOfAnimals(noOfAnimalsInCage++);
 			break;
 
-		case "Snake":
-			animalList.add(new Snake(animalName, ageOfAnimal, weightOfAnimal,
-					cageNo));
+		case Snake:
+			animalList.add(new Snake(animalName, ageOfAnimal, weightOfAnimal, cageNo));
 			cageList.get(cageNo - 1).setNoOfAnimals(noOfAnimalsInCage++);
 			break;
 		}
 		return true;
-
 	}
 
 	/**
@@ -202,8 +186,7 @@ public class Zoo {
 	 */
 	void deathOfAnimal(String animalName) {
 		if (animalName == null || animalName.length() == 0) {
-			throw new NullPointerException(
-					"Name of Animal Can't be Null or Zero");
+			throw new NullPointerException("Name of Animal Can't be Null or Zero");
 		}
 		int cageNo = -1;
 		for (int i = 0; i < animalList.size(); i++) {
@@ -212,8 +195,7 @@ public class Zoo {
 				animalList.remove(i);
 			}
 		}
-		cageList.get(cageNo).setNoOfAnimals(
-				cageList.get(cageNo).getNoOfAnimals() - 1);
+		cageList.get(cageNo).setNoOfAnimals(cageList.get(cageNo).getNoOfAnimals() - 1);
 	}
 
 	void init() {
@@ -221,16 +203,16 @@ public class Zoo {
 		animalList.clear();
 		cageList.clear();
 
-		zoneList.add(new Zone(5, "Mammal", true, false));
-		zoneList.add(new Zone(3, "Birds", true, true));
-		zoneList.add(new Zone(2, "Reptile", false, false));
+		zoneList.add(new Zone(5, AnimalCategory.Mammal, true, false));
+		zoneList.add(new Zone(3, AnimalCategory.Bird, true, true));
+		zoneList.add(new Zone(2, AnimalCategory.Reptile, false, false));
 
-		cageList.add(new Cage(3, "Lion", 1, 5));
-		cageList.add(new Cage(2, "Deer", 1, 5));
-		cageList.add(new Cage(3, "Parrot", 2, 5));
-		cageList.add(new Cage(2, "Raven", 2, 2));
-		cageList.add(new Cage(2, "Alligator", 3, 5));
-		cageList.add(new Cage(3, "Snake", 3, 10));
+		cageList.add(new Cage(3, AnimalType.Lion, 1, 5));
+		cageList.add(new Cage(2, AnimalType.Deer, 1, 5));
+		cageList.add(new Cage(3, AnimalType.Parrot, 2, 5));
+		cageList.add(new Cage(2, AnimalType.Raven, 2, 2));
+		cageList.add(new Cage(2, AnimalType.Alligator, 3, 5));
+		cageList.add(new Cage(3, AnimalType.Snake, 3, 10));
 
 		animalList.add(new Lion("Lion-1", 5, 80, 1));
 		animalList.add(new Lion("Lion-2", 15, 152, 1));

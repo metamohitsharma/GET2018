@@ -8,10 +8,10 @@ package GET2018.SCF.SCFSession8.ZooManagementSystem;
  *
  */
 public class Mammal extends Animal {
-	final String categoryOfAnimal = "Mammal";
+	final AnimalCategory categoryOfAnimal = AnimalCategory.Mammal;
 
 	@Override
-	public String getCategoryOfAnimal() {
+	public AnimalCategory getCategoryOfAnimal() {
 		return categoryOfAnimal;
 	}
 }
@@ -62,8 +62,7 @@ class Deer extends Mammal {
 	final String animalName;
 	final String soundOfAnimal = "Bell";
 
-	public Deer(String animalName, int ageOfAnimal, double weightOfAnimal,
-			int cageNo) {
+	public Deer(String animalName, int ageOfAnimal, double weightOfAnimal, int cageNo) {
 		this.animalName = animalName;
 		this.ageOfAnimal = ageOfAnimal;
 		this.weightOfAnimal = weightOfAnimal;

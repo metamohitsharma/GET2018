@@ -8,12 +8,11 @@ package GET2018.SCF.SCFSession8.ZooManagementSystem;
  */
 public class Cage {
 	int noOfAnimals;
-	final String typeOfAnimal;
+	final AnimalType typeOfAnimal;
 	final int zoneNo;
 	final int maxNoOfAnimals;
 
-	public Cage(int noOfAnimals, String typeOfAnimal, int zoneNo,
-			int maxNoOfAnimals) {
+	public Cage(int noOfAnimals, AnimalType typeOfAnimal, int zoneNo, int maxNoOfAnimals) {
 		this.noOfAnimals = noOfAnimals;
 		this.typeOfAnimal = typeOfAnimal;
 		this.zoneNo = zoneNo;
@@ -45,7 +44,7 @@ public class Cage {
 		return noOfAnimals;
 	}
 
-	public String getTypeOfAnimal() {
+	public AnimalType getTypeOfAnimal() {
 		return typeOfAnimal;
 	}
 

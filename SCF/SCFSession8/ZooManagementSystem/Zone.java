@@ -8,19 +8,18 @@ package GET2018.SCF.SCFSession8.ZooManagementSystem;
  */
 public class Zone {
 	final int maxNoOfCages;
-	final String categoryOfAnimal;
+	final AnimalCategory categoryOfAnimal;
 	boolean hasCanteen;
 	boolean hasPark;
 
-	public Zone(int maxNoOfCages, String categoryOfAnimal, boolean hasCanteen,
-			boolean hasPark) {
+	public Zone(int maxNoOfCages, AnimalCategory categoryOfAnimal, boolean hasCanteen, boolean hasPark) {
 		this.maxNoOfCages = maxNoOfCages;
 		this.categoryOfAnimal = categoryOfAnimal;
 		this.hasCanteen = hasCanteen;
 		this.hasPark = hasPark;
 	}
 
-	public String getCategoryOfAnimal() {
+	public AnimalCategory getCategoryOfAnimal() {
 		return categoryOfAnimal;
 	}
 

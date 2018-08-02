@@ -8,10 +8,10 @@ package GET2018.SCF.SCFSession8.ZooManagementSystem;
  *
  */
 public class Reptile extends Animal {
-	final String categoryOfAnimal = "Reptile";
+	final AnimalCategory categoryOfAnimal = AnimalCategory.Reptile;
 
 	@Override
-	public String getCategoryOfAnimal() {
+	public AnimalCategory getCategoryOfAnimal() {
 		return categoryOfAnimal;
 	}
 }
@@ -27,8 +27,7 @@ class Alligator extends Reptile {
 	final String animalName;
 	final String soundOfAnimal = "Growls";
 
-	Alligator(String animalName, int ageOfAnimal, double weightOfAnimal,
-			int cageNo) {
+	Alligator(String animalName, int ageOfAnimal, double weightOfAnimal, int cageNo) {
 		this.animalName = animalName;
 		this.ageOfAnimal = ageOfAnimal;
 		this.weightOfAnimal = weightOfAnimal;

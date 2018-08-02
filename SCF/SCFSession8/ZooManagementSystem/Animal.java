@@ -11,7 +11,7 @@ public class Animal {
 	protected int ageOfAnimal;
 	protected double weightOfAnimal;
 	protected String soundOfAnimal;
-	protected String categoryOfAnimal;
+	protected AnimalCategory categoryOfAnimal;
 	protected int cageNo;
 
 	public int getAgeOfAnimal() {
@@ -22,7 +22,7 @@ public class Animal {
 		return animalName;
 	}
 
-	public String getCategoryOfAnimal() {
+	public AnimalCategory getCategoryOfAnimal() {
 		return categoryOfAnimal;
 	}
 
@@ -41,4 +41,12 @@ public class Animal {
 	public void setCageNo(int cageNo) {
 		this.cageNo = cageNo;
 	}
+}
+
+enum AnimalCategory {
+	Mammal, Reptile, Bird;
+}
+
+enum AnimalType {
+	Peacook, Parrot, Raven, Lion, Deer, Zebra, Snake, Alligator;
 }
