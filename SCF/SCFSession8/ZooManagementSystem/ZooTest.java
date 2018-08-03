@@ -37,7 +37,8 @@ public class ZooTest {
 		try {
 			new Zoo().addZone(10, null, true, true);
 		} catch (NullPointerException ex) {
-			assertEquals("Category Of Animal in Zone Can't be Null", ex.getMessage());
+			assertEquals("Category Of Animal in Zone Can't be Null",
+					ex.getMessage());
 		}
 	}
 
@@ -47,7 +48,8 @@ public class ZooTest {
 		try {
 			new Zoo().addCage(null, 4, 5);
 		} catch (NullPointerException ex) {
-			assertEquals("Category Of Animal in Cage Can't be Null", ex.getMessage());
+			assertEquals("Category Of Animal in Cage Can't be Null",
+					ex.getMessage());
 		}
 	}
 
@@ -58,7 +60,9 @@ public class ZooTest {
 		try {
 			new Zoo().addAnimal(null, AnimalType.Lion, 5, 34, 1);
 		} catch (NullPointerException ex) {
-			assertEquals("Category Of Animal or Name of Animal Can't be Null or Zero", ex.getMessage());
+			assertEquals(
+					"Category Of Animal or Name of Animal Can't be Null or Zero",
+					ex.getMessage());
 		}
 	}
 
@@ -79,7 +83,8 @@ public class ZooTest {
 		try {
 			new Zoo().addAnimal("Parrot-4", AnimalType.Parrot, 3, 20.5, 2);
 		} catch (ZooException ex) {
-			assertEquals("This cage is not for the given type of Animal", ex.getMessageException());
+			assertEquals("This cage is not for the given type of Animal",
+					ex.getMessageException());
 		}
 
 	}
@@ -91,8 +96,19 @@ public class ZooTest {
 		try {
 			new Zoo().addAnimal("Snake-4", AnimalType.Snake, 3, 20.5, 6);
 		} catch (ZooException ex) {
-			assertEquals("Cage is Full, Can't add more animals", ex.getMessageException());
+			assertEquals("Cage is Full, Can't add more animals",
+					ex.getMessageException());
 		}
+	}
 
+	@Test
+	public void addAnimalWithSameName() {
+		// Adding a new Animal whose Name is already in the System
+		try {
+			new Zoo().addAnimal("Lion-1", AnimalType.Lion, 20, 200, 1);
+		} catch (ZooException ex) {
+			assertEquals("Animal Name should be Unique",
+					ex.getMessageException());
+		}
 	}
 }
