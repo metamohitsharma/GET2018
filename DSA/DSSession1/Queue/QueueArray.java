@@ -7,8 +7,8 @@ package GET2018.DSA.DSSession1.Queue;
  *
  */
 public class QueueArray implements Queue {
-	private int front = -1;
 	private int rear = -1;
+	private int front = -1;
 	String queueArray[] = new String[5];;
 
 	@Override
@@ -19,8 +19,8 @@ public class QueueArray implements Queue {
 		if (isFull()) {
 			throw new QueueException("Queue is Full");
 		}
-		front++;
-		queueArray[front] = addElement;
+		rear++;
+		queueArray[rear] = addElement;
 		return true;
 	}
 
@@ -29,19 +29,19 @@ public class QueueArray implements Queue {
 		if (isEmpty()) {
 			throw new QueueException("Queue is Empty");
 		} else {
-			rear++;
-			return queueArray[rear];
+			front++;
+			return queueArray[front];
 		}
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return (front == rear);
+		return (rear == front);
 	}
 
 	@Override
 	public boolean isFull() {
-		return (front == maxSize);
+		return (rear == maxSize);
 	}
 
 	@SuppressWarnings("serial")
