@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
-
-import GET2018.SCF.SCFSession9.GraphicsLibrary.Screen.ScreenException;
+import org.junit.rules.ExpectedException;
 
 /**
  * This class performs various test cases on Screen Class
@@ -19,6 +19,9 @@ import GET2018.SCF.SCFSession9.GraphicsLibrary.Screen.ScreenException;
 public class ScreenTest {
 	Screen screen;
 
+	@Rule
+	public ExpectedException ex = ExpectedException.none();
+
 	@Before
 	public void init() throws ScreenException {
 		screen = new Screen();
@@ -27,8 +30,7 @@ public class ScreenTest {
 	@Test
 	public void testAddShape() throws ScreenException {
 		// Adding a new Shape to shapeList
-		screen.addShape(ShapeType.Circle, new Point(20, 35), new ArrayList<>(
-				Arrays.asList(25d)));
+		assertTrue(screen.addShape(ShapeType.Circle, new Point(20, 35), new ArrayList<>(Arrays.asList(25d))));
 	}
 
 	@Test
@@ -40,7 +42,7 @@ public class ScreenTest {
 	@Test
 	public void testAllDeleteShape() throws ScreenException {
 		// Delete shapes of Specific type for ex: Circle
-		screen.deleteShapesOfSpecificType(ShapeType.Circle);
+		assertEquals(1, screen.deleteShapesOfSpecificType(ShapeType.Circle));
 	}
 
 	@Test
@@ -98,82 +100,58 @@ public class ScreenTest {
 	@Test
 	public void testIsPointEnclosedWithNull() {
 		// Providing Point as Null
-		try {
-			screen.isPointEnclosed(null);
-		} catch (NullPointerException ex) {
-			assertEquals("Point can't be Null in isPointEnclosed",
-					ex.getMessage());
-		}
+		ex.expect(NullPointerException.class);
+		ex.expectMessage("Point can't be Null in isPointEnclosed");
+		screen.isPointEnclosed(null);
 	}
 
 	@Test
 	public void testDeleteSpecifiedShapeTypeWithNull() {
 		// Providing ShapeType as Null
-		try {
-			screen.deleteShapesOfSpecificType(null);
-		} catch (NullPointerException ex) {
-			assertEquals(
-					"ShapeType can't be Null in deleteShapesOfSpecificType",
-					ex.getMessage());
-		}
+		ex.expect(NullPointerException.class);
+		ex.expectMessage("ShapeType can't be Null in deleteShapesOfSpecificType");
+		screen.deleteShapesOfSpecificType(null);
 	}
 
 	@Test
 	public void testDeleteShapeWithNull() throws ScreenException {
 		// Providing Inputs in Delete Shape as Null
-		try {
-			screen.deleteShape(null, null);
-		} catch (NullPointerException ex) {
-			assertEquals("Arguments in deleteShape can't be Null",
-					ex.getMessage());
-		}
+		ex.expect(NullPointerException.class);
+		ex.expectMessage("Arguments in deleteShape can't be Null");
+		screen.deleteShape(null, null);
 	}
 
 	@Test
 	public void testAddSquareOutOfBounds() throws ScreenException {
 		// Providing a Square Points Out of Screen
-		try {
-			screen.addShape(ShapeType.Square, new Point(1000, 1000),
-					new ArrayList<Double>(Arrays.asList(250d)));
-		} catch (ScreenException e) {
-			assertEquals("Width is out of Screen in Square",
-					e.getMessageException());
-		}
+		ex.expect(ScreenException.class);
+		ex.expectMessage("Width is out of Screen in Square");
+		screen.addShape(ShapeType.Square, new Point(1000, 1000), new ArrayList<Double>(Arrays.asList(250d)));
 	}
 
 	@Test
 	public void testAddCircleOutOfBounds() throws ScreenException {
 		// Providing a Circle Points Out of Screen
-		try {
-			screen.addShape(ShapeType.Circle, new Point(1000, 1000),
-					new ArrayList<Double>(Arrays.asList(250d)));
-		} catch (ScreenException e) {
-			assertEquals("Circle is out of Screen", e.getMessageException());
-		}
+		ex.expect(ScreenException.class);
+		ex.expectMessage("Circle is out of Screen");
+		screen.addShape(ShapeType.Circle, new Point(1000, 1000), new ArrayList<Double>(Arrays.asList(2500d)));
 	}
 
 	@Test
 	public void testAddTriangleOutOfBounds() throws ScreenException {
 		// Providing a Triangle Points Out of Screen
-		try {
-			screen.addShape(ShapeType.Triangle, new Point(1000, 1000),
-					new ArrayList<Double>(Arrays.asList(250d, 25d, 100d)));
-		} catch (ScreenException e) {
-			assertEquals(
-					"Triangle Can't be add because Sum of two Sides of Triangle must be greater than the third side",
-					e.getMessageException());
-		}
+		ex.expect(ScreenException.class);
+		ex.expectMessage(
+				"Triangle Can't be add because Sum of two Sides of Triangle must be greater than the third side");
+		screen.addShape(ShapeType.Triangle, new Point(1000, 1000),
+				new ArrayList<Double>(Arrays.asList(250d, 25d, 100d)));
 	}
 
 	@Test
 	public void testAddRectangleOutOfBounds() throws ScreenException {
 		// Providing a Triangle Points Out of Screen
-		try {
-			screen.addShape(ShapeType.Rectangle, new Point(1000, 1000),
-					new ArrayList<Double>(Arrays.asList(250d, 25d)));
-		} catch (ScreenException e) {
-			assertEquals("Width or Height is out of Screen in Rectangle",
-					e.getMessageException());
-		}
+		ex.expect(ScreenException.class);
+		ex.expectMessage("Width or Height is out of Screen in Rectangle");
+		screen.addShape(ShapeType.Rectangle, new Point(1000, 1000), new ArrayList<Double>(Arrays.asList(1000d, 25d)));
 	}
 }

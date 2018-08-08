@@ -3,8 +3,6 @@ package GET2018.SCF.SCFSession9.GraphicsLibrary;
 import java.text.DecimalFormat;
 import java.util.Date;
 
-import GET2018.SCF.SCFSession9.GraphicsLibrary.Screen.ScreenException;
-
 /**
  * This Rectangle class implements Shape interface
  * 

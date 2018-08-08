@@ -2,8 +2,6 @@ package GET2018.SCF.SCFSession9.GraphicsLibrary;
 
 import java.util.Date;
 
-import GET2018.SCF.SCFSession9.GraphicsLibrary.Screen.ScreenException;
-
 /**
  * This interface is made for Shapes Properties
  * 

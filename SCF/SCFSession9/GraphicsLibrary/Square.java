@@ -2,7 +2,6 @@ package GET2018.SCF.SCFSession9.GraphicsLibrary;
 
 import java.text.DecimalFormat;
 import java.util.Date;
-import GET2018.SCF.SCFSession9.GraphicsLibrary.Screen.ScreenException;
 
 /**
  * This Square class implements Shape interface
@@ -21,8 +20,7 @@ public class Square implements Shape {
 		this.width = width;
 		this.origin = origin;
 		this.timestamp = timestamp;
-		if ((origin.getxPoint() + width) > 1920
-				|| (origin.getyPoint() + width) > 1080) {
+		if ((origin.getxPoint() + width) > 1920 || (origin.getyPoint() + width) > 1080) {
 			throw new ScreenException("Width is out of Screen in Square");
 		}
 	}
@@ -46,14 +44,13 @@ public class Square implements Shape {
 	public boolean isPointEnclosed(Point isPointEnclosed) {
 
 		/*
-		 * If originX <= pointX <= originX+width and originY <= pointY
-		 * <=originY+width then the given point is enclosed by Rectangle
+		 * If originX <= pointX <= originX+width and originY <= pointY <=originY+width
+		 * then the given point is enclosed by Rectangle
 		 */
 		if (origin.getxPoint() <= isPointEnclosed.getxPoint()
 				&& isPointEnclosed.getxPoint() <= origin.getxPoint() + width) {
 			if (origin.getyPoint() <= isPointEnclosed.getyPoint()
-					&& isPointEnclosed.getyPoint() <= origin.getyPoint()
-							+ width) {
+					&& isPointEnclosed.getyPoint() <= origin.getyPoint() + width) {
 				return true;
 			}
 		}
