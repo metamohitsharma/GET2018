@@ -1,7 +1,5 @@
 package GET2018.DSA.DSSession1.Stack;
 
-import GET2018.DSA.DSSession1.Stack.StackArray.StackException;
-
 /**
  * It implements various operations on Stack
  * 

@@ -1,7 +1,6 @@
 package GET2018.DSA.DSSession1.Stack;
 
 import java.util.LinkedList;
-import GET2018.DSA.DSSession1.Stack.StackArray.StackException;
 
 /**
  * It is used for implementation of Stack using Linked List
@@ -10,7 +9,7 @@ import GET2018.DSA.DSSession1.Stack.StackArray.StackException;
  *
  */
 public class StackLinkedList implements Stack {
-	private int topElement = -1;
+	int topElement = -1;
 	LinkedList<String> stackLinkedList = new LinkedList<>();
 
 	@Override

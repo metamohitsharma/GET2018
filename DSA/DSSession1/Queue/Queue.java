@@ -1,7 +1,5 @@
 package GET2018.DSA.DSSession1.Queue;
 
-import GET2018.DSA.DSSession1.Queue.QueueArray.QueueException;
-
 /**
  * It implements various operations on Queue
  * 

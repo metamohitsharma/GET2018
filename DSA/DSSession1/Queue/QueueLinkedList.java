@@ -2,8 +2,6 @@ package GET2018.DSA.DSSession1.Queue;
 
 import java.util.LinkedList;
 
-import GET2018.DSA.DSSession1.Queue.QueueArray.QueueException;
-
 /**
  * It implements the methods defined in Queue using Linked List
  * 

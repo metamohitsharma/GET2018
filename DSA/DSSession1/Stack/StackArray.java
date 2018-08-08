@@ -47,17 +47,4 @@ public class StackArray implements Stack {
 			return stackArray[topElement];
 		}
 	}
-
-	@SuppressWarnings("serial")
-	static class StackException extends Exception {
-		String messageException;
-
-		public StackException(String messageException) {
-			this.messageException = messageException;
-		}
-
-		public String getMessageException() {
-			return messageException;
-		}
-	}
 }

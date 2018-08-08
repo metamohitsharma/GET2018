@@ -44,17 +44,4 @@ public class QueueArray implements Queue {
 		return (rear == maxSize);
 	}
 
-	@SuppressWarnings("serial")
-	static class QueueException extends Exception {
-		String messageException;
-
-		public QueueException(String messageException) {
-			this.messageException = messageException;
-		}
-
-		public String getMessageException() {
-			return messageException;
-		}
-	}
-
 }

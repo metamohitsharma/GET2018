@@ -3,8 +3,9 @@ package GET2018.DSA.DSSession1.Queue;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
-import GET2018.DSA.DSSession1.Queue.QueueArray.QueueException;
+import org.junit.rules.ExpectedException;
 
 /**
  * This class performs various tests on QueueArray class methods
@@ -14,6 +15,9 @@ import GET2018.DSA.DSSession1.Queue.QueueArray.QueueException;
  */
 public class QueueArrayTest {
 	QueueArray queueArray;
+
+	@Rule
+	public ExpectedException ex = ExpectedException.none();
 
 	@Before
 	public void init() throws QueueException {
@@ -31,24 +35,20 @@ public class QueueArrayTest {
 	}
 
 	@Test
-	public void testPushQueueUsingArrayOverflow() {
+	public void testPushQueueUsingArrayOverflow() throws QueueException {
 		// Adding element when Queue is Full
-		try {
-			queueArray.addItem("Stars");
-			queueArray.addItem("Written");
-		} catch (QueueException ex) {
-			assertEquals("Queue is Full", ex.getMessageException());
-		}
+		queueArray.addItem("Stars");
+		ex.expect(QueueException.class);
+		ex.expectMessage("Queue is Full");
+		queueArray.addItem("Written");
 	}
 
 	@Test
 	public void pushNullInQueueUsingArray() throws QueueException {
 		// Adding Null Element in Queue
-		try {
-			queueArray.addItem(null);
-		} catch (NullPointerException ex) {
-			assertEquals("Can't add Null to Queue", ex.getMessage());
-		}
+		ex.expect(NullPointerException.class);
+		ex.expectMessage("Can't add Null to Queue");
+		queueArray.addItem(null);
 	}
 
 	@Test
@@ -59,16 +59,14 @@ public class QueueArrayTest {
 	}
 
 	@Test
-	public void testDeleteQueueUsingArrayUnderflow() {
+	public void testDeleteQueueUsingArrayUnderflow() throws QueueException {
 		// Deleting from an Empty Stack
-		try {
-			queueArray.deleteItem();
-			queueArray.deleteItem();
-			queueArray.deleteItem();
-			queueArray.deleteItem();
-			queueArray.deleteItem();
-		} catch (QueueException ex) {
-			assertEquals("Queue is Empty", ex.getMessageException());
-		}
+		queueArray.deleteItem();
+		queueArray.deleteItem();
+		queueArray.deleteItem();
+		queueArray.deleteItem();
+		ex.expect(QueueException.class);
+		ex.expectMessage("Queue is Empty");
+		queueArray.deleteItem();
 	}
 }

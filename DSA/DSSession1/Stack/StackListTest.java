@@ -3,9 +3,9 @@ package GET2018.DSA.DSSession1.Stack;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
-
-import GET2018.DSA.DSSession1.Stack.StackArray.StackException;
+import org.junit.rules.ExpectedException;
 
 /**
  * This class performs various tests on StackLinkedList class methods
@@ -15,6 +15,9 @@ import GET2018.DSA.DSSession1.Stack.StackArray.StackException;
  */
 public class StackListTest {
 	StackLinkedList stackList;
+
+	@Rule
+	public ExpectedException ex = ExpectedException.none();
 
 	@Before
 	public void init() throws StackException {
@@ -36,11 +39,9 @@ public class StackListTest {
 	@Test
 	public void pushNullInStackUsingList() throws StackException {
 		// Adding Null Element in Stack
-		try {
-			stackList.push(null);
-		} catch (NullPointerException ex) {
-			assertEquals("Element to be Added Can't be Null", ex.getMessage());
-		}
+		ex.expect(NullPointerException.class);
+		ex.expectMessage("Element to be Added Can't be Null");
+		stackList.push(null);
 	}
 
 	@Test
@@ -62,28 +63,23 @@ public class StackListTest {
 	}
 
 	@Test
-	public void testPushStackUsingListOverflow() {
+	public void testPushStackUsingListOverflow() throws StackException {
 		// Adding element when Stack is Full
-		try {
-			stackList.push("Street");
-			stackList.push("Directed");
-		} catch (StackException ex) {
-			assertEquals("Element can't be Add, Stack is Full",
-					ex.getMessageException());
-		}
+		stackList.push("Street");
+		ex.expect(StackException.class);
+		ex.expectMessage("Element can't be Add, Stack is Full");
+		stackList.push("Directed");
 	}
 
 	@Test
-	public void testPopStackUsingListUnderflow() {
+	public void testPopStackUsingListUnderflow() throws StackException {
 		// Deleting element from an Empty Stack
-		try {
-			stackList.pop();
-			stackList.pop();
-			stackList.pop();
-			stackList.pop();
-			stackList.pop();
-		} catch (StackException ex) {
-			assertEquals("Stack Underflow", ex.getMessageException());
-		}
+		stackList.pop();
+		stackList.pop();
+		stackList.pop();
+		stackList.pop();
+		ex.expect(StackException.class);
+		ex.expectMessage("Stack Underflow");
+		stackList.pop();
 	}
 }
