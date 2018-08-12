@@ -23,7 +23,7 @@ public interface UnidrectedWeightedGraph {
 	 * @param node
 	 * @return
 	 */
-	public List<Integer> reachable(int node);
+	public List<Integer> reachable(int node) throws GraphException;
 
 	/**
 	 * Return the Minimum Spanning Tree for the Graph
@@ -31,4 +31,13 @@ public interface UnidrectedWeightedGraph {
 	 * @return
 	 */
 	public int[][] minimumSpanningTree();
+
+	/**
+	 * Returns the Shortest Path from node1 to node2 using Dijkstra’s Algorithm
+	 * 
+	 * @param node1
+	 * @param node2
+	 * @return
+	 */
+	public int shortestPath(int node1, int node2) throws GraphException;
 }

@@ -8,7 +8,7 @@ package GET2018.DSA.DSSession6.UndirectedWeightedGraph;
  */
 @SuppressWarnings("serial")
 public class GraphException extends Exception {
-	String message;
+	private String message;
 
 	public GraphException(String message) {
 		this.message = message;
