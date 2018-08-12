@@ -30,8 +30,7 @@ public class UniqueCharactersTest {
 	@Test
 	public void testCalculateUniqueCharacters() {
 		// Calculating Unique Charaters in String Mohit Sharma35 -^ -^
-		assertEquals(14,
-				uniqueString.calculateUniqueCharacters("Mohit Sharma35 -^ -^"));
+		assertEquals(14, uniqueString.calculateUniqueCharacters("Mohit Sharma35 -^ -^"));
 	}
 
 	@Test

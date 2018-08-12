@@ -50,12 +50,9 @@ public class EmployeeTest {
 		employees.add(new Employee(5, "Dipanshu", "Ajmer"));
 		employees.add(new Employee(7, "Chirag", "Udaipur"));
 		for (int i = 0; i < sortedEmployees.size(); i++) {
-			assertEquals(employees.get(i).getId(), sortedEmployees.get(i)
-					.getId());
-			assertEquals(employees.get(i).getName(), sortedEmployees.get(i)
-					.getName());
-			assertEquals(employees.get(i).getAddress(), sortedEmployees.get(i)
-					.getAddress());
+			assertEquals(employees.get(i).getId(), sortedEmployees.get(i).getId());
+			assertEquals(employees.get(i).getName(), sortedEmployees.get(i).getName());
+			assertEquals(employees.get(i).getAddress(), sortedEmployees.get(i).getAddress());
 		}
 	}
 
@@ -70,12 +67,9 @@ public class EmployeeTest {
 		employees.add(new Employee(2, "Mohit", "Jaipur"));
 		employees.add(new Employee(1, "Shubham", "UttarPradesh"));
 		for (int i = 0; i < sortedEmployees.size(); i++) {
-			assertEquals(employees.get(i).getId(), sortedEmployees.get(i)
-					.getId());
-			assertEquals(employees.get(i).getName(), sortedEmployees.get(i)
-					.getName());
-			assertEquals(employees.get(i).getAddress(), sortedEmployees.get(i)
-					.getAddress());
+			assertEquals(employees.get(i).getId(), sortedEmployees.get(i).getId());
+			assertEquals(employees.get(i).getName(), sortedEmployees.get(i).getName());
+			assertEquals(employees.get(i).getAddress(), sortedEmployees.get(i).getAddress());
 		}
 	}
 

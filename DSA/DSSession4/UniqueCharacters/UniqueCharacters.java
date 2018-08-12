@@ -12,7 +12,7 @@ import java.util.Set;
  *
  */
 public class UniqueCharacters {
-	Map<String, Integer> strings = new HashMap<String, Integer>();
+	Map<String, Integer> wordsHavingUniqueCharacters = new HashMap<String, Integer>();
 
 	/**
 	 * Calculates Unique Characters in inputString
@@ -24,15 +24,15 @@ public class UniqueCharacters {
 		if (inputString == null) {
 			throw new NullPointerException("Input String Can't be Null");
 		}
-		if (strings.containsKey(inputString)) {
-			return strings.get(inputString);
+		if (wordsHavingUniqueCharacters.containsKey(inputString)) {
+			return wordsHavingUniqueCharacters.get(inputString);
 		}
 		Set<Character> tokensInString = new HashSet<Character>();
 		char arrayOfTokens[] = inputString.toCharArray();
 		for (int i = 0; i < arrayOfTokens.length; i++) {
 			tokensInString.add(arrayOfTokens[i]);
 		}
-		strings.put(inputString, tokensInString.size());
+		wordsHavingUniqueCharacters.put(inputString, tokensInString.size());
 		return tokensInString.size();
 	}
 }

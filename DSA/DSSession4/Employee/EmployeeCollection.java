@@ -23,8 +23,7 @@ public class EmployeeCollection {
 	 * @param address
 	 * @throws EmployeeException
 	 */
-	public boolean addEmployee(int id, String name, String address)
-			throws EmployeeException {
+	public boolean addEmployee(int id, String name, String address) throws EmployeeException {
 		if (name == null || address == null) {
 			throw new NullPointerException("Name or Address can't be Null");
 		}
@@ -57,7 +56,7 @@ public class EmployeeCollection {
 	 */
 	public List<Employee> sortEmployeeByName() {
 		List<Employee> sortByName = new ArrayList<Employee>(employeeList);
-		Collections.sort(sortByName, new SortByName());
+		Collections.sort(sortByName, new Employee());
 		return sortByName;
 	}
 }
