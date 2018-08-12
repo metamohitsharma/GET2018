@@ -5,7 +5,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * This class performs different test on ListOfIntegers class
@@ -16,6 +18,9 @@ import org.junit.Test;
 public class NestedListTest {
 
 	ListOfIntegers integersList;
+
+	@Rule
+	public ExpectedException ex = ExpectedException.none();
 
 	@Before
 	public void init() throws FileNotFoundException {
@@ -52,10 +57,8 @@ public class NestedListTest {
 	@Test
 	public void addListWithNull() throws FileNotFoundException {
 		// Add Null in List
-		try {
-			integersList.addList(null);
-		} catch (NullPointerException ex) {
-			assertEquals("List to be Add Can't be Empty", ex.getMessage());
-		}
+		ex.expect(NullPointerException.class);
+		ex.expectMessage("List to be Add Can't be Empty");
+		integersList.addList(null);
 	}
 }

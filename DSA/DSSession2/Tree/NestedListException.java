@@ -14,7 +14,7 @@ public class NestedListException extends Exception {
 		this.messageException = messageException;
 	}
 
-	public String getMessageException() {
+	public String getMessage() {
 		return messageException;
 	}
 }

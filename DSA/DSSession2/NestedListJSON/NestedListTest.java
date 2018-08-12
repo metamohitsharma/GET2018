@@ -3,7 +3,9 @@ package GET2018.DSA.DSSession2.NestedListJSON;
 import static org.junit.Assert.*;
 import java.io.FileNotFoundException;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * This class performs different test on ListOfIntegers class
@@ -14,6 +16,9 @@ import org.junit.Test;
 public class NestedListTest {
 
 	ListOfIntegers integersList;
+
+	@Rule
+	public ExpectedException ex = ExpectedException.none();
 
 	@Before
 	public void init() throws FileNotFoundException {
@@ -50,20 +55,16 @@ public class NestedListTest {
 	@Test
 	public void addListWithNull() throws FileNotFoundException {
 		// Add Null in List
-		try {
-			integersList.addList(null);
-		} catch (NullPointerException ex) {
-			assertEquals("FileName Can't be Empty", ex.getMessage());
-		}
+		ex.expect(NullPointerException.class);
+		ex.expectMessage("FileName Can't be Empty");
+		integersList.addList(null);
 	}
 
 	@Test
-	public void addListFileNotFound() {
+	public void addListFileNotFound() throws FileNotFoundException {
 		// Add a file which not exist
-		try {
-			integersList.addList("AddInteger.json");
-		} catch (FileNotFoundException ex) {
-			assertEquals("File not Found in addList", ex.getMessage());
-		}
+		ex.expect(FileNotFoundException.class);
+		ex.expectMessage("File not Found in addList");
+		integersList.addList("AddInteger.json");
 	}
 }

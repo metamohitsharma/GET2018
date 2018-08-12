@@ -3,7 +3,9 @@ package GET2018.DSA.DSSession2.InfixToPostfix;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * This class performs various Tests on InfixToPostfixClass
@@ -13,6 +15,9 @@ import org.junit.Test;
 public class TestInfixToPostfix {
 
 	StackArray stack;
+
+	@Rule
+	public ExpectedException ex = ExpectedException.none();
 
 	@Before
 	public void init() {
@@ -38,22 +43,18 @@ public class TestInfixToPostfix {
 	}
 
 	@Test
-	public void testWrongInfixExpression() {
+	public void testWrongInfixExpression() throws StackArrayException {
 		// Converting Invalid Infix to Postfix
-		try {
-			stack.infixToPostfix("a * b + c )");
-		} catch (StackArrayException ex) {
-			assertEquals("Wrong Infix Expression", ex.getMessageException());
-		}
+		ex.expect(StackArrayException.class);
+		ex.expectMessage("Wrong Infix Expression");
+		stack.infixToPostfix("a * b + c )");
 	}
 
 	@Test
 	public void testInfixNullException() throws StackArrayException {
 		// Converting Null Infix to Postfix
-		try {
-			stack.infixToPostfix(null);
-		} catch (NullPointerException ex) {
-			assertEquals("Infix Can't be Null", ex.getMessage());
-		}
+		ex.expect(NullPointerException.class);
+		ex.expectMessage("Infix Can't be Null");
+		stack.infixToPostfix(null);
 	}
 }

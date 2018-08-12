@@ -3,7 +3,9 @@ package GET2018.DSA.DSSession2.CounsellingProcess;
 import static org.junit.Assert.*;
 import java.io.IOException;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * This class performs various tests on different methods in CounsellingProgram
@@ -15,6 +17,8 @@ import org.junit.Test;
 public class CounsellingProgramTest {
 
 	CounsellingProgram cp;
+	@Rule
+	public ExpectedException ex = ExpectedException.none();
 
 	@Before
 	public void init() {
@@ -30,22 +34,18 @@ public class CounsellingProgramTest {
 	}
 
 	@Test
-	public void programFileNotExistTest() {
+	public void programFileNotExistTest() throws IOException {
 		// Adding Program from a file that Doesn't exist
-		try {
-			cp.addProgram("CounsellingProgram.xlsx");
-		} catch (IOException ex) {
-			assertEquals("File Not Found while adding Programs", ex.getMessage());
-		}
+		ex.expect(IOException.class);
+		ex.expectMessage("File Not Found while adding Programs");
+		cp.addProgram("CounsellingProgram.xlsx");
 	}
 
 	@Test
-	public void studentFileNotExistTest() throws QueueException {
+	public void studentFileNotExistTest() throws QueueException, IOException {
 		// Adding Students from a file that Doesn't exist
-		try {
-			cp.addStudent("StudentList.xlsx");
-		} catch (IOException ex) {
-			assertEquals("File Not Found while adding Students", ex.getMessage());
-		}
+		ex.expect(IOException.class);
+		ex.expectMessage("File Not Found while adding Students");
+		cp.addStudent("StudentList.xlsx");
 	}
 }

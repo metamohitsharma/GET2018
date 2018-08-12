@@ -1,9 +1,10 @@
 package GET2018.DSA.DSSession2.EvaluatePostfix;
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * This class tests various methods described in StackArray class
@@ -13,6 +14,9 @@ import org.junit.Test;
  */
 public class TestEvaluatePostfix {
 	StackArray stackArray;
+
+	@Rule
+	public ExpectedException ex = ExpectedException.none();
 
 	@Before
 	public void init() {
@@ -28,20 +32,16 @@ public class TestEvaluatePostfix {
 	@Test
 	public void evaluatePostfixWithNull() throws StackException {
 		// Evaluate Postfix with Null
-		try {
-			stackArray.evaluatePostfix(null);
-		} catch (NullPointerException ex) {
-			assertEquals("Postfix Expression can't be Null", ex.getMessage());
-		}
+		ex.expect(NullPointerException.class);
+		ex.expectMessage("Postfix Expression can't be Null");
+		stackArray.evaluatePostfix(null);
 	}
 
 	@Test
 	public void evaluatePostfixWithWrongExpression() throws StackException {
 		// Evaluating Postfix with AND operator
-		try {
-			stackArray.evaluatePostfix("23 9 &&");
-		} catch (NumberFormatException ex) {
-			assertEquals("Postfix Expression Wrong", ex.getMessage());
-		}
+		ex.expect(NumberFormatException.class);
+		ex.expectMessage("Postfix Expression Wrong");
+		stackArray.evaluatePostfix("23 9 &&");
 	}
 }

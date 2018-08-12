@@ -4,7 +4,9 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * This class performs different test on ListOfIntegers class
@@ -15,6 +17,9 @@ import org.junit.Test;
 public class NestedListTest {
 
 	ListOfIntegers integersList;
+
+	@Rule
+	public ExpectedException ex = ExpectedException.none();
 
 	@Before
 	public void init() {
@@ -60,30 +65,24 @@ public class NestedListTest {
 	@Test
 	public void addListWithNull() {
 		// Add Null in List
-		try {
-			integersList.addList(null);
-		} catch (NullPointerException ex) {
-			assertEquals("List to be Add Can't be Empty", ex.getMessage());
-		}
+		ex.expect(NullPointerException.class);
+		ex.expectMessage("List to be Add Can't be Empty");
+		integersList.addList(null);
 	}
 
 	@Test
-	public void getValueAtHeadList() {
+	public void getValueAtHeadList() throws NestedListException {
 		// Search TH value in list
-		try {
-			integersList.getValue(NestedList.nestedList, "TH");
-		} catch (NestedListException ex) {
-			assertEquals("List found at Head", ex.getMessageException());
-		}
+		ex.expect(NestedListException.class);
+		ex.expectMessage("List found at Head");
+		integersList.getValue(NestedList.nestedList, "TH");
 	}
 
 	@Test
-	public void getValueAtTailList() {
+	public void getValueAtTailList() throws NestedListException {
 		// Search TT value in List
-		try {
-			integersList.getValue(NestedList.nestedList, "TT");
-		} catch (NestedListException ex) {
-			assertEquals("List found at Tail", ex.getMessageException());
-		}
+		ex.expect(NestedListException.class);
+		ex.expectMessage("List found at Tail");
+		integersList.getValue(NestedList.nestedList, "TT");
 	}
 }
