@@ -1,16 +1,16 @@
 package GET2018.DSA.DSSession5.Dictionary;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /**
  * This class implements Methods in Dictionary Interface
@@ -20,21 +20,17 @@ import javax.json.JsonReader;
  */
 public class Implementation implements Dictionary {
 
-	public Implementation(String fileName) throws FileNotFoundException {
+	public Implementation(String fileName) throws IOException, ParseException {
 		if (fileName == null) {
 			throw new NullPointerException("fileName can't be Null");
 		}
 		try {
-			File jsonInputFile = new File(fileName);
-			InputStream input = new FileInputStream(jsonInputFile);
-			JsonReader reader = Json.createReader(input);
-			JsonObject jsonObj = reader.readObject();
-			reader.close();
-			Set<String> keys = jsonObj.keySet();
-			Iterator<String> i = keys.iterator();
-			while (i.hasNext()) {
-				String key = (String) i.next();
-				dictionary.put(key, jsonObj.get(key).toString());
+			JSONObject rootJSON = (JSONObject) new JSONParser()
+					.parse(new FileReader(fileName));
+			@SuppressWarnings("unchecked")
+			Set<String> keys = rootJSON.keySet();
+			for (String i : keys) {
+				dictionary.put(i, rootJSON.get(i).toString());
 			}
 		} catch (FileNotFoundException ex) {
 			throw new FileNotFoundException("fileName not Found");

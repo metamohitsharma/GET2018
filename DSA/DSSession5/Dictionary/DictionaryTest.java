@@ -3,9 +3,11 @@ package GET2018.DSA.DSSession5.Dictionary;
 import static org.junit.Assert.*;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.simple.parser.ParseException;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -25,7 +27,7 @@ public class DictionaryTest {
 	public ExpectedException ex = ExpectedException.none();
 
 	@Before
-	public void init() throws FileNotFoundException {
+	public void init() throws IOException, ParseException {
 		implementation = new Implementation("Words.JSON");
 	}
 
@@ -81,7 +83,7 @@ public class DictionaryTest {
 	}
 
 	@Test
-	public void initWithNull() throws FileNotFoundException {
+	public void initWithNull() throws IOException, ParseException {
 		// Adding fileName as Null
 		ex.expect(NullPointerException.class);
 		ex.expectMessage("fileName can't be Null");
@@ -89,7 +91,7 @@ public class DictionaryTest {
 	}
 
 	@Test
-	public void initWithFileNotFound() throws FileNotFoundException {
+	public void initWithFileNotFound() throws IOException, ParseException {
 		// Adding a File that doesn't exist
 		ex.expect(FileNotFoundException.class);
 		ex.expectMessage("fileName not Found");
