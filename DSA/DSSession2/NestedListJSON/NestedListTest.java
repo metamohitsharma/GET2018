@@ -2,6 +2,8 @@ package GET2018.DSA.DSSession2.NestedListJSON;
 
 import static org.junit.Assert.*;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import org.json.simple.parser.ParseException;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -21,29 +23,27 @@ public class NestedListTest {
 	public ExpectedException ex = ExpectedException.none();
 
 	@Before
-	public void init() throws FileNotFoundException {
+	public void init() throws ParseException, IOException {
 		integersList = new ListOfIntegers();
 		integersList.addList("Integers1.JSON");
-		integersList.addList("Integers2.JSON");
-		integersList.addList("Integers3.JSON");
 	}
 
 	@Test
-	public void addListTest() throws FileNotFoundException {
-		// Add List using File Integers4.JSON
-		assertTrue(integersList.addList("Integers4.JSON"));
+	public void addListTest() throws ParseException, IOException {
+		// Add List using File Integers2.JSON
+		integersList.addList("Integers2.JSON");
 	}
 
 	@Test
 	public void addAllIntegersTest() {
 		// Add all integers in Nested List
-		assertEquals(206, integersList.addAllIntegers());
+		assertEquals(192, integersList.addAllIntegers());
 	}
 
 	@Test
 	public void largestIntegerTest() {
 		// Largest Integer in NestedList
-		assertEquals(576, integersList.largestInteger());
+		assertEquals(70, integersList.largestInteger());
 	}
 
 	@Test
@@ -53,7 +53,7 @@ public class NestedListTest {
 	}
 
 	@Test
-	public void addListWithNull() throws FileNotFoundException {
+	public void addListWithNull() throws ParseException, IOException {
 		// Add Null in List
 		ex.expect(NullPointerException.class);
 		ex.expectMessage("FileName Can't be Empty");
@@ -61,7 +61,7 @@ public class NestedListTest {
 	}
 
 	@Test
-	public void addListFileNotFound() throws FileNotFoundException {
+	public void addListFileNotFound() throws ParseException, IOException {
 		// Add a file which not exist
 		ex.expect(FileNotFoundException.class);
 		ex.expectMessage("File not Found in addList");

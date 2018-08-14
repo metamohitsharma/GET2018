@@ -1,6 +1,7 @@
 package GET2018.DSA.DSSession2.NestedListJSON;
 
-import java.io.FileNotFoundException;
+import org.json.simple.parser.ParseException;
+import java.io.IOException;
 import java.util.LinkedList;
 
 /**
@@ -17,8 +18,9 @@ public interface NestedList {
 	 * 
 	 * @param addList
 	 * @return
+	 * @throws org.json.simple.parser.ParseException
 	 */
-	public boolean addList(String fileName) throws FileNotFoundException;
+	public boolean addList(String fileName) throws ParseException, IOException;
 
 	/**
 	 * Adds all the Integers in List
