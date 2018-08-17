@@ -58,33 +58,36 @@ INSERT INTO categories(category_name, parent_id) VALUES
     ('Laptop', 1),
     ('USB', 1),
     ('Redmi', 4),
+    ('Xiaomi', 4),
     ('Dell', 5),
     ('Sony', 5),
     ('Kingston', 6),
     ('HP', 6),
     ('Watch', 2),
-    ('Fastrack', 12),
-    ('Timex', 12),
+    ('Fastrack', 13),
+    ('Timex', 13),
     ('Shirt', 3),
     ('Trouser', 3),
     ('Suit', 3),
-    ('Van Heusen', 15),
     ('Van Heusen', 16),
-    ('Peter England', 17);
+    ('Van Heusen', 17),
+    ('Peter England', 18);
 
 INSERT INTO categorylink VALUES
     (1,7),
+    (1,8),
     (2,7),
-    (3,8),
-    (4,9),
-    (5,8),
-    (6,10),
-    (7,11),
-    (8,13),
-    (9,14),
-    (10,18),
-    (11,19),
-    (12,20);
+    (2,8),
+    (3,9),
+    (4,10),
+    (5,9),
+    (6,11),
+    (7,12),
+    (8,14),
+    (9,15),
+    (10,19),
+    (11,20),
+    (12,21);
     
 INSERT INTO shopping_cart VALUES
 	('rsbhatra98@gmail.com', 1, 'Redmi 3s Prime', 2),
@@ -93,10 +96,10 @@ INSERT INTO shopping_cart VALUES
     ('rs98@gmail.com', 12, 'Peter England Suit', 8),
     ('innovativemohit@gmail.com', 8, 'Fastrack Digital Watch 4hy7e', 3);
 
-INSERT INTO order_details(email, total_price, date_of_order) VALUES
-	('rsbhatra98@gmail.com', 30000.00, '2018/08/16'),
-    ('innovativemohit@gmail.com', 99400.00, '2017/08/15'),
-    ('chirag10march@gmail.com', 1000.00, '2018/07/01');
+INSERT INTO order_details(email, total_price, date_of_order, address_id) VALUES
+	('rsbhatra98@gmail.com', 30000.00, '2018/08/16', 2),
+    ('innovativemohit@gmail.com', 99400.00, '2017/08/15', 4),
+    ('chirag10march@gmail.com', 1000.00, '2018/07/01', 5);
     
 INSERT INTO items_ordered VALUES
 	(1,12,2,20000.00, 'Shipped'),

@@ -1,7 +1,7 @@
 USE storefront;
 
 #Display Recent 50 Orders placed (Id, Order Date, Order Total).
-SELECT order_id, date_of_order, total_price
+SELECT *
 FROM order_details
 ORDER BY date_of_order DESC
 LIMIT 50;

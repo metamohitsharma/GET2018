@@ -52,7 +52,9 @@ CREATE TABLE order_details(order_id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(25) NOT NULL,
     total_price FLOAT NOT NULL, 
     date_of_order DATE NOT NULL,
-    FOREIGN KEY (email) REFERENCES users(email) ON DELETE CASCADE ON UPDATE CASCADE);
+    address_id INTEGER,
+    FOREIGN KEY (email) REFERENCES users(email) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (address_id) REFERENCES address(address_id) ON DELETE CASCADE ON UPDATE CASCADE);
     
 CREATE TABLE items_ordered(order_id INT, 
     product_id INT, 

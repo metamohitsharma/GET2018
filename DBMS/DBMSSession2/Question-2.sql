@@ -12,7 +12,7 @@ ORDER BY product_issue_date;
 SELECT DISTINCT products.product_id, product_name, quantity, price 
 FROM products 
 WHERE NOT EXISTS (SELECT images.product_id 
-				  FROM images 
+                FROM images 
                   WHERE images.product_id = products.product_id);
 
 /*
@@ -22,7 +22,7 @@ sorted by Parent Category Title and then Category Title.
 */
 SELECT child.category_id, child.category_name, 
 IFNULL(parent.category_name, 'Top Category') as parent_name
-FROM categories child LEFT JOIN categories parent
+FROM categories child INNER JOIN categories parent
 	ON child.parent_id = parent.category_id
 ORDER BY parent_name, child.category_name;
 
