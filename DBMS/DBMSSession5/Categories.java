@@ -8,24 +8,24 @@ package GET2018.DBMS.DBMSSession5;
  */
 public class Categories {
 	private String categoryName;
-	private int categoryID;
-	private int parentID;
+	private int categoryId;
+	private int parentId;
 
-	public Categories(String categoryName, int categoryID, int parentID) {
+	public Categories(String categoryName, int categoryId, int parentId) {
 		this.categoryName = categoryName;
-		this.categoryID = categoryID;
-		this.parentID = parentID;
+		this.categoryId = categoryId;
+		this.parentId = parentId;
 	}
 
-	public int getCategoryID() {
-		return categoryID;
+	public int getCategoryId() {
+		return categoryId;
 	}
 
 	public String getCategoryName() {
 		return categoryName;
 	}
 
-	public int getParentID() {
-		return parentID;
+	public int getParentId() {
+		return parentId;
 	}
 }

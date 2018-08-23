@@ -11,14 +11,13 @@ import java.sql.SQLException;
  *
  */
 public class ConnectionToDB {
-	public static Connection getConnection() throws SQLException,
-			ClassNotFoundException {
+	public static Connection getConnection() throws SQLException, ClassNotFoundException {
 		Connection connection = null;
 		try {
-			Class.forName(UtilityClass.getConnectionclass());
-			connection = DriverManager.getConnection(UtilityClass.getUrl()
-					+ UtilityClass.getDatabasename(),
-					UtilityClass.getUsername(), UtilityClass.getPassword());
+			Class.forName(UtilityForConnection.getConnectionclass());
+			connection = DriverManager.getConnection(
+					UtilityForConnection.getUrl() + UtilityForConnection.getDatabasename(),
+					UtilityForConnection.getUsername(), UtilityForConnection.getPassword());
 		} catch (ClassNotFoundException e) {
 			throw new ClassNotFoundException();
 		} catch (SQLException e) {

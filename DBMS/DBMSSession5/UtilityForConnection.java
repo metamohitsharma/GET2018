@@ -6,12 +6,12 @@ package GET2018.DBMS.DBMSSession5;
  * @author Mohit Sharma
  *
  */
-public class UtilityClass {
+public class UtilityForConnection {
 	private static final String databaseName = "storefront";
 	private static final String username = "root";
-	private static final String password = "rootms123";
+	private static final String password = "isnhpnatI@$123395";
 	private static final String url = "jdbc:mysql://localhost:3306/";
-	private static final String connectionClass = "com.mysql.jdbc.Driver";
+	private static final String connectionClass = "com.mysql.cj.jdbc.Driver";
 
 	public static String getConnectionclass() {
 		return connectionClass;

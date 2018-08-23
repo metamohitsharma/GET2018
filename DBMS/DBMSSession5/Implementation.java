@@ -21,57 +21,50 @@ public class Implementation {
 	}
 
 	/**
-	 * Returns List of Orders which are shipped and placed by userID
+	 * Returns List of Orders which are shipped and placed by userId
 	 * 
-	 * @param userID
+	 * @param userId
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<OrderDetail> orderDetailsOfShippedOrder(String userID)
-			throws SQLException {
-		if (userID == null) {
-			throw new NullPointerException("userID can't be Null");
+	public List<OrderDetail> orderDetailsOfShippedOrder(String userId) throws SQLException {
+		if (userId == null) {
+			throw new NullPointerException("userId can't be Null");
 		}
 		List<OrderDetail> orderDetailList = new ArrayList<OrderDetail>();
 		try {
-			StoreFrontQueries.setQuery1(userID);
-			PreparedStatement statement = connectionToDB
-					.prepareStatement(StoreFrontQueries.getQuery1());
+			PreparedStatement statement = connectionToDB.prepareStatement(StoreFrontQueries.getQueryOne(userId));
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
-				orderDetailList.add(new OrderDetail(result.getInt(1), result
-						.getDate(2), result.getDouble(3)));
+				orderDetailList.add(new OrderDetail(result.getInt(1), result.getDate(2), result.getDouble(3)));
 			}
 		} catch (SQLException ex) {
-			throw new SQLException("Hello");
+			throw new SQLException();
 		}
 		return orderDetailList;
 	}
 
 	/**
-	 * Inserts Images for given IDs
+	 * Inserts Images for given Ids
 	 * 
 	 * @param id
 	 * @param images
 	 * @return
 	 * @throws StoreFrontException
 	 */
-	public int insertImagesOfProducts(int[] id, String[] images)
-			throws StoreFrontException {
-		if (id == null || images == null) {
-			throw new NullPointerException("ID or Images Can't be Null");
+	public int insertImagesOfProducts(int[] ids, String[] images) throws StoreFrontException {
+		if (ids == null || images == null) {
+			throw new NullPointerException("Id or Images Can't be Null");
 		}
-		if (id.length != images.length) {
-			throw new StoreFrontException("ID and Images length are not Equal");
+		if (ids.length != images.length) {
+			throw new StoreFrontException("Id and Images length are not Equal");
 		}
 		try {
-			StoreFrontQueries.setQuery2();
-			PreparedStatement statement = connectionToDB
-					.prepareStatement(StoreFrontQueries.getQuery2());
+			PreparedStatement statement = connectionToDB.prepareStatement(StoreFrontQueries.getQueryTwo());
 			try {
 				connectionToDB.setAutoCommit(false);
-				for (int i = 0; i < id.length; i++) {
-					statement.setInt(1, id[i]);
+				for (int i = 0; i < ids.length; i++) {
+					statement.setInt(1, ids[i]);
 					statement.setString(2, images[i]);
 					statement.addBatch();
 				}
@@ -98,9 +91,7 @@ public class Implementation {
 		int deletedProducts = 0;
 		try {
 			connectionToDB.setAutoCommit(false);
-			StoreFrontQueries.setQuery3();
-			PreparedStatement statement = connectionToDB
-					.prepareStatement(StoreFrontQueries.getQuery3());
+			PreparedStatement statement = connectionToDB.prepareStatement(StoreFrontQueries.getQueryThree());
 			deletedProducts = statement.executeUpdate();
 			connectionToDB.commit();
 		} catch (SQLException ex) {
@@ -122,13 +113,10 @@ public class Implementation {
 		// List to save the Result of Query i.e., All Categories
 		List<Categories> categoriesList = new ArrayList<Categories>();
 		try {
-			StoreFrontQueries.setQuery4();
-			PreparedStatement statement = connectionToDB
-					.prepareStatement(StoreFrontQueries.getQuery4());
+			PreparedStatement statement = connectionToDB.prepareStatement(StoreFrontQueries.getQueryFour());
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
-				categoriesList.add(new Categories(result.getString(1), result
-						.getInt(2), result.getInt(3)));
+				categoriesList.add(new Categories(result.getString(1), result.getInt(2), result.getInt(3)));
 			}
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
@@ -138,28 +126,24 @@ public class Implementation {
 		for (int i = 0; i < categoriesList.size(); i++) {
 			Categories child = categoriesList.get(i);
 
-			// For Topmost Categories ParentID is Zero
-			if (child.getParentID() == 0) {
-				List<Integer> childCategoryID = new ArrayList<Integer>();
-				childCategoryID.add(child.getCategoryID());
+			// For Topmost Categories ParentId is Zero
+			if (child.getParentId() == 0) {
+				List<Integer> childCategoryId = new ArrayList<Integer>();
+				childCategoryId.add(child.getCategoryId());
 
 				// Iterating Child Categories of Parent
-				for (int j = i + 1, k = 0; k != childCategoryID.size();) {
-					if (j == categoriesList.size()
-							&& k < childCategoryID.size()) {
+				for (int j = i + 1, k = 0; k != childCategoryId.size();) {
+					if (j == categoriesList.size() && k < childCategoryId.size()) {
 						j = i + 1;
 						k++;
-					} else if (categoriesList.get(j).getParentID() == childCategoryID
-							.get(k)) {
-						childCategoryID.add(categoriesList.get(j)
-								.getCategoryID());
+					} else if (categoriesList.get(j).getParentId() == childCategoryId.get(k)) {
+						childCategoryId.add(categoriesList.get(j).getCategoryId());
 						j++;
 					} else {
 						j++;
 					}
 				}
-				categoryDetailList.add(new CategoryDetail(child
-						.getCategoryName(), childCategoryID.size() - 1));
+				categoryDetailList.add(new CategoryDetail(child.getCategoryName(), childCategoryId.size() - 1));
 			}
 		}
 		return categoryDetailList;
