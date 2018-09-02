@@ -2,16 +2,25 @@ package GET2018.EAD.EADSession4.Model;
 
 import java.sql.Date;
 
+/**
+ * This class contains UserInfo fields
+ * 
+ * @author Mohit Sharma
+ *
+ */
 public class UserInfoPojo {
 	private String firstName;
 	private String lastName;
 	private Date dateOfBirth;
-	private int contactNo;
+	private String contactNo;
 	private String email;
 	private String organization;
 
-	public UserInfoPojo(String firstName, String lastName, Date dateOfBirth,
-			int contactNo, String email, String organization) {
+	public UserInfoPojo() {
+	}
+
+	public UserInfoPojo(String firstName, String lastName, Date dateOfBirth, String contactNo, String email,
+			String organization) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
@@ -20,7 +29,7 @@ public class UserInfoPojo {
 		this.organization = organization;
 	}
 
-	public int getContactNo() {
+	public String getContactNo() {
 		return contactNo;
 	}
 

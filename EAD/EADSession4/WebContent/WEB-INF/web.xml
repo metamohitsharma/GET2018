@@ -2,15 +2,27 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:web="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-	<servlet>
-		<servlet-name>RegistrationServlet</servlet-name>
-		<servlet-class>GET2018.EAD.EADSession4.Servlets.RegistrationServlet
-		</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>RegistrationServlet</servlet-name>
-		<url-pattern>/RegistrationServlet</url-pattern>
-	</servlet-mapping>
+	<context-param>
+		<description>Location of Stored Images</description>
+		<param-name>profileImage</param-name>
+		<param-value>
+			C:\Users\Mohit\eclipse-workspace\GET2018\src\GET2018\EAD\EADSession4\Images
+		</param-value>
+	</context-param>
+	<context-param>
+		<description>Location of Error Page</description>
+		<param-name>errorPage</param-name>
+		<param-value>
+			C:\Users\Mohit\eclipse-workspace\GET2018\WebContent\error.html
+		</param-value>
+	</context-param>
+	<context-param>
+		<description>Login Redirect</description>
+		<param-name>loginPage</param-name>
+		<param-value>
+			C:\Users\Mohit\eclipse-workspace\GET2018\WebContent\Login.html
+		</param-value>
+	</context-param>
 	<servlet>
 		<servlet-name>ProfileServlet</servlet-name>
 		<servlet-class>GET2018.EAD.EADSession4.Servlets.ProfileServlet
@@ -63,16 +75,60 @@
 		<servlet-name>FriendsServlet</servlet-name>
 		<url-pattern>/FriendsServlet</url-pattern>
 	</servlet-mapping>
-	<filter>
-		<filter-name>SessionVerifyFilter</filter-name>
-		<filter-class>GET2018.EAD.EADSession4.Filters.SessionVerifyFilter</filter-class>
-	</filter>
 	<filter-mapping>
 		<filter-name>SessionVerifyFilter</filter-name>
 		<url-pattern>/FriendsServlet</url-pattern>
 	</filter-mapping>
-
+	<servlet>
+		<servlet-name>FriendProfileServlet</servlet-name>
+		<servlet-class>GET2018.EAD.EADSession4.Servlets.FriendProfileServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FriendProfileServlet</servlet-name>
+		<url-pattern>/FriendProfileServlet</url-pattern>
+	</servlet-mapping>
+	<filter-mapping>
+		<filter-name>SessionVerifyFilter</filter-name>
+		<url-pattern>/FriendProfileServlet</url-pattern>
+	</filter-mapping>
+	<servlet>
+		<servlet-name>RegistrationServlet</servlet-name>
+		<servlet-class>GET2018.EAD.EADSession4.Servlets.RegistrationServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegistrationServlet</servlet-name>
+		<url-pattern>/RegistrationServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ImageUploadServlet</servlet-name>
+		<servlet-class>GET2018.EAD.EADSession4.Servlets.ImageUploadServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ImageUploadServlet</servlet-name>
+		<url-pattern>/ImageUploadServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ReturnProfileServlet</servlet-name>
+		<servlet-class>GET2018.EAD.EADSession4.Servlets.ReturnProfileServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReturnProfileServlet</servlet-name>
+		<url-pattern>/ReturnProfileServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>GET2018.EAD.EADSession4.Servlets.LogoutServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/LogoutServlet</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
+		<welcome-file>Login.html</welcome-file>
 	</welcome-file-list>
 </web-app>

@@ -1,5 +1,11 @@
 package GET2018.EAD.EADSession4.Model;
 
+/**
+ * This Class contains Friend Informations
+ * 
+ * @author Mohit Sharma
+ *
+ */
 public class FriendInfoPojo {
 	private int id;
 	private String firstName;

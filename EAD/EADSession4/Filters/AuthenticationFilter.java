@@ -9,10 +9,16 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import GET2018.EAD.EADSession4.Facade.Facade;
 
+/**
+ * This filter Authenticates a user
+ * 
+ * @author Mohit Sharma
+ *
+ */
 public class AuthenticationFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -25,20 +31,26 @@ public class AuthenticationFilter implements Filter {
 			if (id != 0) {
 				HttpServletRequest httpRequest = (HttpServletRequest) request;
 				HttpSession session = httpRequest.getSession();
-				session.setAttribute("userId", email);
+				session.setAttribute("userId", id);
 				chain.doFilter(request, response);
 			} else {
-				System.out.println("Credentials Wrong!!");
+				HttpServletResponse httpsResponse = (HttpServletResponse) response;
+				httpsResponse.sendRedirect(request.getServletContext().getInitParameter("errorPage"));
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void init(FilterConfig fConfig) throws ServletException {
-	}
-
+	@Override
 	public void destroy() {
+		// TODO Auto-generated method stub
+
 	}
 
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+		// TODO Auto-generated method stub
+
+	}
 }

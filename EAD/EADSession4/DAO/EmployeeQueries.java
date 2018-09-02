@@ -13,19 +13,19 @@ public class EmployeeQueries {
 	}
 
 	public static String getQueryTwo() {
-		return "INSERT INTO user VALUES(?,?,?,?,?,?,?)";
+		return "INSERT INTO user(first_name, last_name, date_of_birth, contact_no, email, password, organization) VALUES(?,?,?,?,?,?,?)";
 	}
 
 	public static String getQueryThree() {
-		return "SELECT * FROM employee WHERE id = ?";
+		return "SELECT * FROM user WHERE id = ?";
 	}
 
 	public static String getQueryFour() {
-		return "UPDATE employee SET first_name=?, last_name=?, date_of_birth=? contact_no=? WHERE id=?;";
+		return "UPDATE user SET first_name=?, last_name=?, date_of_birth=?, contact_no=? WHERE id=?";
 	}
 
 	public static String getQueryFive() {
-		return "SELECT id, first_name, last_name FROM employee WHERE organization IN (SELECT organization"
-				+ "FROM employee WHERE id=?);";
+		return "SELECT id, first_name, last_name FROM user WHERE organization IN (SELECT organization "
+				+ "FROM user WHERE id=?)";
 	}
 }

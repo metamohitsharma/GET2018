@@ -9,23 +9,38 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * It Verifies the Session of the current user
+ * 
+ * @author Mohit Sharma
+ *
+ */
 public class SessionVerifyFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpSession session = httpRequest.getSession();
-		if (session.getAttribute("userId").equals(request.getParameter("hiddenId"))) {
+		if ((int) session.getAttribute("userId") == Integer.parseInt(request.getParameter("hiddenId"))) {
 			chain.doFilter(request, response);
+		} else {
+			HttpServletResponse httpsResponse = (HttpServletResponse) response;
+			httpsResponse.sendRedirect(request.getServletContext().getInitParameter("errorPage"));
 		}
 	}
 
-	public void init(FilterConfig fConfig) throws ServletException {
-	}
-
+	@Override
 	public void destroy() {
+		// TODO Auto-generated method stub
+
 	}
 
+	@Override
+	public void init(FilterConfig arg0) throws ServletException {
+		// TODO Auto-generated method stub
+
+	}
 }
