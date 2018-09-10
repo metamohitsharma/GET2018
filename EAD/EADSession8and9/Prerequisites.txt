@@ -1,0 +1,2 @@
+- Copy com folder in src/java
+- Copy views folder in src/webapp/WEB-INF
