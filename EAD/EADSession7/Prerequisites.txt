@@ -1,0 +1,4 @@
+https://repo.spring.io/release/org/springframework/spring/5.0.8.RELEASE/spring-framework-5.0.8.RELEASE-dist.zip
+- Download it
+- Extract the Zip file
+- Add all the jar files of Lib folder to build path
