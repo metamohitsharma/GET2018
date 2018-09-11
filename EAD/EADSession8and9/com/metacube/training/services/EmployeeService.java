@@ -1,6 +1,7 @@
 package com.metacube.training.services;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,23 +19,6 @@ import com.metacube.training.models.Employee;
 public class EmployeeService {
 	@Autowired
 	private EmployeeDAO employeeDAO;
-
-	/**
-	 * Authenticates Employee
-	 * 
-	 * @param email
-	 * @param password
-	 * @return
-	 */
-	public Status login(String email, String password) {
-		List<Employee> listOfEmployee = employeeDAO.getAllEmployees();
-		for (Employee existingEmployee : listOfEmployee) {
-			if (email.equals(existingEmployee.getEmailId()) && password.equals(existingEmployee.getPassword())) {
-				return Status.EXIST;
-			}
-		}
-		return Status.NOT_EXIST;
-	}
 
 	/**
 	 * Searches Employee
@@ -55,5 +39,34 @@ public class EmployeeService {
 	 */
 	public Employee getEmployeeByEmail(String emailId) {
 		return employeeDAO.getEmployeeByEmail(emailId);
+	}
+
+	/**
+	 * Returns all Employees
+	 * 
+	 * @return
+	 */
+	public List<Employee> getAllEmployees() {
+		return employeeDAO.getAllEmployees();
+	}
+
+	/**
+	 * Return Employee using Code
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public Employee getEmployeeByCode(int code) {
+		return employeeDAO.getEmployeeByCode(code);
+	}
+
+	/**
+	 * Updates Employee
+	 * 
+	 * @param employee
+	 * @return
+	 */
+	public Status updateEmployee(Employee employee) {
+		return employeeDAO.updateEmployee(employee);
 	}
 }

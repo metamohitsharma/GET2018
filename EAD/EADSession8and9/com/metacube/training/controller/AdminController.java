@@ -6,15 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-import com.metacube.training.Status.Status;
+
 import com.metacube.training.models.Employee;
 import com.metacube.training.services.AdminService;
+import com.metacube.training.services.EmployeeService;
 
 /**
  * Admin Controller Maps URL to Views
@@ -24,14 +25,15 @@ import com.metacube.training.services.AdminService;
  */
 @Controller
 @RequestMapping(value = "/admin")
-@SessionAttributes("email")
 public class AdminController {
 	@Autowired
-	private HttpSession session;
+	HttpSession session;
 	@Autowired
+	EmployeeService employeeService;
+
 	private AdminService adminService;
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@GetMapping("")
 	public String adminLogin() {
 		return "admin/login";
 	}
@@ -39,8 +41,7 @@ public class AdminController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView adminLoginDetails(@RequestParam("email") String email,
 			@RequestParam("password") String password) {
-		Status status = adminService.login(email, password);
-		if (status.equals(Status.EXIST)) {
+		if ("admin".equals(email) && "admin".equals(password)) {
 			session.setAttribute("email", email);
 			return new ModelAndView("admin/dashboard", "email", email);
 		} else {
@@ -64,16 +65,18 @@ public class AdminController {
 	@RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
 	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	public String adminAddEmployee(@ModelAttribute("employee") Employee employee) {
+		adminService = AdminService.getInstance();
 		if (employee != null && employee.getCode() == 0) {
 			adminService.addEmployee(employee);
 		} else {
 			adminService.updateEmployee(employee);
 		}
-		return "redirect:admin/allEmployees";
+		return "redirect:allEmployees";
 	}
 
 	@RequestMapping(path = "/allEmployees", method = RequestMethod.GET)
 	public String getAllEmployees(Model model) {
+		adminService = AdminService.getInstance();
 		model.addAttribute("employees", adminService.getAllEmployees());
 		return "admin/allEmployees";
 	}
@@ -86,8 +89,9 @@ public class AdminController {
 
 	@RequestMapping(path = "/deleteEmployee", method = RequestMethod.GET)
 	public String deleteEmployee(Model model, @RequestParam("code") int code) {
+		adminService = AdminService.getInstance();
 		model.addAttribute("employee", adminService.deleteEmployeeByCode(code));
-		return "redirect:admin/allEmployees";
+		return "redirect:allEmployees";
 	}
 
 	@RequestMapping(value = "/searchEmployees", method = RequestMethod.GET)
@@ -98,6 +102,7 @@ public class AdminController {
 	@RequestMapping(path = "/searchEmployees", method = RequestMethod.POST)
 	public String searchEmployee(Model model, @RequestParam("firstName") String firstName,
 			@RequestParam("lastName") String lastName) {
+		adminService = AdminService.getInstance();
 		model.addAttribute("employees", adminService.searchEmployees(firstName, lastName));
 		return "admin/allEmployees";
 	}

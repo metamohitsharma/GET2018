@@ -1,7 +1,7 @@
 package com.metacube.training.Status;
 
 /**
- * This Enumeration tells the status
+ * This Enumeration is used to generated different Status
  * 
  * @author Mohit Sharma
  *

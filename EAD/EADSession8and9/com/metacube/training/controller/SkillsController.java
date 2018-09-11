@@ -26,7 +26,7 @@ public class SkillsController {
 	@RequestMapping(path = "/addSkills", method = RequestMethod.GET)
 	public String createSkill(Model model) {
 		model.addAttribute("skill", new Skills());
-		return "skills/editSkill";
+		return "admin/editSkill";
 	}
 
 	@RequestMapping(path = "/addSkills", method = RequestMethod.POST)
@@ -36,24 +36,24 @@ public class SkillsController {
 		} else {
 			skillsService.updateSkill(skill);
 		}
-		return "redirect:skills/allSkills";
+		return "redirect:allSkills";
 	}
 
 	@RequestMapping(path = "/allSkills", method = RequestMethod.GET)
 	public String getAllSkills(Model model) {
 		model.addAttribute("skills", skillsService.getAllSkills());
-		return "skills/allSkills";
+		return "/admin/allSkills";
 	}
 
 	@RequestMapping(path = "/editSkill", method = RequestMethod.GET)
 	public String editSkill(Model model, @RequestParam("id") int id) {
-		model.addAttribute("project", skillsService.getSkillById(id));
-		return "skills/editSkill";
+		model.addAttribute("skill", skillsService.getSkillById(id));
+		return "admin/editSkill";
 	}
 
 	@RequestMapping(path = "/deleteSkill", method = RequestMethod.GET)
 	public String deleteSkkill(@RequestParam("id") int id) {
 		skillsService.deleteSkill(id);
-		return "redirect:skills/allSkills";
+		return "redirect:allSkills";
 	}
 }

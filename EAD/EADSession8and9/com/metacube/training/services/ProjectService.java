@@ -1,6 +1,5 @@
 package com.metacube.training.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,8 +26,7 @@ public class ProjectService {
 	 * @return
 	 */
 	public Status addProject(Project project) {
-		Status status = projectDao.addProject(project);
-		return status;
+		return projectDao.addProject(project);
 	}
 
 	/**
@@ -61,8 +59,7 @@ public class ProjectService {
 		if (project == null) {
 			return Status.NOT_EXIST;
 		} else {
-			Status status = projectDao.deleteProject(id);
-			return status;
+			return projectDao.deleteProject(id);
 		}
 	}
 
@@ -73,12 +70,10 @@ public class ProjectService {
 	 * @return
 	 */
 	public Status updateProject(Project project) {
-		List<Project> listOfProject = new ArrayList<Project>();
-		listOfProject = projectDao.getAllProjects();
+		List<Project> listOfProject = projectDao.getAllProjects();
 		for (Project existingProject : listOfProject) {
 			if (project.getProjectId() == existingProject.getProjectId()) {
-				Status status = projectDao.updateProject(project);
-				return status;
+				return projectDao.updateProject(project);
 			}
 		}
 		return Status.NOT_EXIST;

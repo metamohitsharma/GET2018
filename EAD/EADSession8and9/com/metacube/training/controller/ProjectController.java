@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.metacube.training.models.Project;
 import com.metacube.training.services.ProjectService;
 
@@ -26,7 +27,7 @@ public class ProjectController {
 	@RequestMapping(path = "/addProject", method = RequestMethod.GET)
 	public String createProject(Model model) {
 		model.addAttribute("project", new Project());
-		return "project/editProject";
+		return "admin/editProject";
 	}
 
 	@RequestMapping(path = "/addProject", method = RequestMethod.POST)
@@ -36,24 +37,24 @@ public class ProjectController {
 		} else {
 			projectService.updateProject(project);
 		}
-		return "redirect:project/allProjects";
+		return "redirect:allProjects";
 	}
 
 	@RequestMapping(path = "/allProjects", method = RequestMethod.GET)
 	public String getAllProjects(Model model) {
 		model.addAttribute("projects", projectService.getAllProjects());
-		return "project/allProjects";
+		return "/admin/allProjects";
 	}
 
 	@RequestMapping(path = "/editProject", method = RequestMethod.GET)
 	public String editProject(Model model, @RequestParam("id") int id) {
 		model.addAttribute("project", projectService.getProjectById(id));
-		return "project/editProject";
+		return "admin/editProject";
 	}
 
 	@RequestMapping(path = "/delete", method = RequestMethod.GET)
 	public String deleteProject(@RequestParam("id") int id) {
 		projectService.deleteProject(id);
-		return "redirect:project/allProjects";
+		return "redirect:allProjects";
 	}
 }

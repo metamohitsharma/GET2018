@@ -9,12 +9,13 @@ CREATE  TABLE employee (
 	last_name  VARCHAR(100) NULL ,
 	dob  DATE NOT NULL ,
 	gender  VARCHAR(45) NULL ,
-	email  VARCHAR(45) NOT NULL ,
+	email  VARCHAR(45) NOT NULL UNIQUE,
 	contact  VARCHAR(45) NULL ,
 	skype_id  VARCHAR(45) NULL ,
 	profile_picture  VARCHAR(100) NULL ,
-	password  VARCHAR(100) NOT NULL ,
+	password  VARCHAR(100) NOT NULL DEFAULT '12345',
 	enabled  VARCHAR(45) NOT NULL DEFAULT 'true' ,
+    skills VARCHAR(20) NOT NULL,
 	PRIMARY KEY ( code ));
   
   

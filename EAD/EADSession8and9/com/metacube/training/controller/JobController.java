@@ -26,7 +26,7 @@ public class JobController {
 	@RequestMapping(path = "/addJobs", method = RequestMethod.GET)
 	public String createJob(Model model) {
 		model.addAttribute("job", new JobTitle());
-		return "job/addJob";
+		return "admin/addJob";
 	}
 
 	@RequestMapping(path = "/addJobs", method = RequestMethod.POST)
@@ -36,24 +36,24 @@ public class JobController {
 		} else {
 			jobService.updateJob(job);
 		}
-		return "redirect:job/allJobs";
+		return "redirect:allJobs";
 	}
 
 	@RequestMapping(path = "/allJobs", method = RequestMethod.GET)
 	public String getAllJob(Model model) {
 		model.addAttribute("job", jobService.getAllJobs());
-		return "/job/allJobs";
+		return "/admin/allJobs";
 	}
 
 	@RequestMapping(path = "/editJob", method = RequestMethod.GET)
 	public String editJob(Model model, @RequestParam("code") int code) {
 		model.addAttribute("job", jobService.getJobByCode(code));
-		return "job/addJob";
+		return "admin/addJob";
 	}
 
 	@RequestMapping(path = "/deleteJob", method = RequestMethod.GET)
 	public String deleteJob(@RequestParam("code") int code) {
 		jobService.deleteJob(code);
-		return "redirect:job/allJobs";
+		return "redirect:allJobs";
 	}
 }

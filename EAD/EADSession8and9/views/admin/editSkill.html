@@ -5,20 +5,22 @@
 <title>Add Skill</title>
 </head>
 <body>
-	<h1>Add Skill</h1>
-	<form th:object="${skill}" th:action="@{addSkills}" method="POST">
-		<table width="50%">
-			<tr>
-				<td><input type="hidden" th:field="*{skillId}" /></td>
-			</tr>
-			<tr>
-				<td>Skill Name</td>
-				<td><input type="text" th:field="*{skillName}"></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="submit"></td>
-			</tr>
-		</table>
-	</form>
+	<center>
+		<h1>Add Skill</h1>
+		<form th:object="${skill}" th:action="@{addSkills}" method="POST">
+			<table width="50%">
+				<tr>
+					<td><input type="hidden" th:field="*{skillId}" /></td>
+				</tr>
+				<tr>
+					<td>Skill Name</td>
+					<td><input type="text" th:field="*{skillName}"></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="submit"></td>
+				</tr>
+			</table>
+		</form>
+	</center>
 </body>
 </html>

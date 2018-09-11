@@ -2,39 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
 <title>Edit project Details</title>
+
 </head>
 <body>
-
-	<form th:object="${project}" th:action="@{addProject}" method="post">
-		<table>
-			<tr>
-				<td><input type="hidden" th:field="*{projectId}" /></td>
-				<td>Name</td>
-				<td><input type="text" th:field="*{name}" /></td>
-			</tr>
-			<tr>
-				<td>Description:</td>
-				<td><input type="text" th:field="*{description}" /></td>
-			</tr>
-			<tr>
-				<td>Start Date:</td>
-				<td><input type="date" th:field="*{startDate}" /></td>
-			</tr>
-			<tr>
-				<td>End Date:</td>
-				<td><input type="date" th:field="*{endDate}" /></td>
-			</tr>
-			<tr>
-				<td>Project Logo:</td>
-				<td><input type="text" th:field="*{projectLogo}" /></td>
-			</tr>
-			<tr>
-				<td>
-					<button type="submit">Save</button>
-				</td>
-			</tr>
-		</table>
-	</form>
-
+	<div>
+		<form th:object="${project}" th:action="@{addProject}" method="post">
+			<input type="hidden" th:field="*{projectId}" /> <br> <label>Name:</label>
+			<input type="text" th:field="*{name}" /> <br> <label>Description:</label>
+			<input type="text" th:field="*{description}" /> <br> <label>Start
+				Date:</label> <input type="date" th:field="*{startDate}" /> <br> <label>End
+				Date:</label> <input type="date" th:field="*{endDate}" /> <br> <label>Project
+				Logo:</label> <input type="text" th:field="*{projectLogo}" />
+			<button type="submit">Save</button>
+		</form>
+	</div>
 </body>
 </html>

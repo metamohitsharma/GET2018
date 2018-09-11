@@ -17,8 +17,12 @@ import com.metacube.training.models.Employee;
  *
  */
 public class AdminDao {
-
+	private static AdminDao adminDao = new AdminDao();
 	private Connection connection;
+
+	public static AdminDao getInstance() {
+		return adminDao;
+	}
 
 	/**
 	 * Adds Employee
@@ -28,7 +32,7 @@ public class AdminDao {
 	 */
 	public Status addEmployee(Employee employee) {
 		try {
-			connection = ConnectionToDB.getConnection();
+			connection = ConnectionToDatabase.getConnection();
 			String query = Queries.ADD_EMPLOYEE;
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, employee.getFirstName());
@@ -61,7 +65,7 @@ public class AdminDao {
 	public List<Employee> getAllEmployees() {
 		List<Employee> listOfEmployee = new ArrayList<Employee>();
 		try {
-			connection = ConnectionToDB.getConnection();
+			connection = ConnectionToDatabase.getConnection();
 			String query = Queries.GET_ALL_EMPLOYEES;
 			PreparedStatement statement = connection.prepareStatement(query);
 			ResultSet resultSet = statement.executeQuery();
@@ -99,7 +103,7 @@ public class AdminDao {
 	public List<Employee> searchEmployees(String firstName, String lastName) {
 		List<Employee> listOfEmployee = new ArrayList<Employee>();
 		try {
-			connection = ConnectionToDB.getConnection();
+			connection = ConnectionToDatabase.getConnection();
 			String query = Queries.SEARCH_EMPLOYEES;
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, firstName);
@@ -139,7 +143,7 @@ public class AdminDao {
 	public Employee getEmployeeByCode(int code) {
 		Employee employee = new Employee();
 		try {
-			connection = ConnectionToDB.getConnection();
+			connection = ConnectionToDatabase.getConnection();
 			String query = Queries.GET_EMPLOYEE_BY_CODE;
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setInt(1, code);
@@ -176,7 +180,7 @@ public class AdminDao {
 	public Employee getEmployeeByEmail(String email) {
 		Employee employee = new Employee();
 		try {
-			connection = ConnectionToDB.getConnection();
+			connection = ConnectionToDatabase.getConnection();
 			String query = Queries.GET_EMPLOYEE_BY_EMAIL;
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, email);
@@ -211,7 +215,7 @@ public class AdminDao {
 	 */
 	public Status updateEmployee(Employee employee) {
 		try {
-			connection = ConnectionToDB.getConnection();
+			connection = ConnectionToDatabase.getConnection();
 			String query = Queries.UPDATE_EMPLOYEE;
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, employee.getFirstName());
@@ -245,7 +249,7 @@ public class AdminDao {
 	 */
 	public Status deleteEmployee(int code) {
 		try {
-			connection = ConnectionToDB.getConnection();
+			connection = ConnectionToDatabase.getConnection();
 			String query = Queries.DELETE_EMPLOYEE;
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setInt(1, code);

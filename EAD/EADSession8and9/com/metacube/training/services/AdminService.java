@@ -1,9 +1,6 @@
 package com.metacube.training.services;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import com.metacube.training.Status.Status;
 import com.metacube.training.dao.AdminDao;
 import com.metacube.training.models.Employee;
@@ -15,24 +12,12 @@ import com.metacube.training.models.Employee;
  *
  */
 public class AdminService {
-	@Autowired
+
+	private static AdminService adminService = new AdminService();
 	private AdminDao adminDao;
 
-	/**
-	 * Authenticates Admin
-	 * 
-	 * @param email
-	 * @param password
-	 * @return
-	 */
-	public Status login(String email, String password) {
-		List<Employee> listOfEmployee = adminDao.getAllEmployees();
-		for (Employee existingEmployee : listOfEmployee) {
-			if (email.equals(existingEmployee.getEmailId()) && password.equals(existingEmployee.getPassword())) {
-				return Status.EXIST;
-			}
-		}
-		return Status.NOT_EXIST;
+	public static AdminService getInstance() {
+		return adminService;
 	}
 
 	/**
@@ -42,6 +27,7 @@ public class AdminService {
 	 * @return
 	 */
 	public Status addEmployee(Employee employee) {
+		AdminDao adminDao = AdminDao.getInstance();
 		return adminDao.addEmployee(employee);
 	}
 
@@ -51,6 +37,7 @@ public class AdminService {
 	 * @return
 	 */
 	public List<Employee> getAllEmployees() {
+		adminDao = AdminDao.getInstance();
 		return adminDao.getAllEmployees();
 	}
 
@@ -61,6 +48,7 @@ public class AdminService {
 	 * @return
 	 */
 	public Employee getEmployeeByCode(int code) {
+		adminDao = AdminDao.getInstance();
 		return adminDao.getEmployeeByCode(code);
 	}
 
@@ -71,6 +59,7 @@ public class AdminService {
 	 * @return
 	 */
 	public Employee getEmployeeByEmail(String email) {
+		adminDao = AdminDao.getInstance();
 		return adminDao.getEmployeeByEmail(email);
 	}
 
@@ -82,6 +71,7 @@ public class AdminService {
 	 * @return
 	 */
 	public List<Employee> searchEmployees(String firstName, String lastName) {
+		adminDao = AdminDao.getInstance();
 		return adminDao.searchEmployees(firstName, lastName);
 	}
 
@@ -92,6 +82,7 @@ public class AdminService {
 	 * @return
 	 */
 	public Status updateEmployee(Employee employee) {
+		adminDao = AdminDao.getInstance();
 		List<Employee> listOfEmployee = adminDao.getAllEmployees();
 		for (Employee existingEmployee : listOfEmployee) {
 			if (employee.getCode() == existingEmployee.getCode()) {
@@ -108,8 +99,8 @@ public class AdminService {
 	 * @return
 	 */
 	public Status deleteEmployeeByCode(int code) {
-		List<Employee> listOfEmployee = new ArrayList<Employee>();
-		listOfEmployee = adminDao.getAllEmployees();
+		adminDao = AdminDao.getInstance();
+		List<Employee> listOfEmployee = adminDao.getAllEmployees();
 		for (Employee existingEmployee : listOfEmployee) {
 			if (code == existingEmployee.getCode()) {
 				return adminDao.deleteEmployee(code);

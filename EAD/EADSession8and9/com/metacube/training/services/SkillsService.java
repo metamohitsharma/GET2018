@@ -1,6 +1,5 @@
 package com.metacube.training.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +25,7 @@ public class SkillsService {
 	 * @return
 	 */
 	public Status addSkill(Skills skill) {
-		Status status = skillsDao.addSkill(skill);
-		return status;
+		return skillsDao.addSkill(skill);
 	}
 
 	/**
@@ -60,8 +58,7 @@ public class SkillsService {
 		if (skill == null) {
 			return Status.NOT_EXIST;
 		} else {
-			Status status = skillsDao.deleteSkill(id);
-			return status;
+			return skillsDao.deleteSkill(id);
 		}
 	}
 
@@ -72,12 +69,10 @@ public class SkillsService {
 	 * @return
 	 */
 	public Status updateSkill(Skills skill) {
-		List<Skills> listOfSkills = new ArrayList<Skills>();
-		listOfSkills = skillsDao.getAllSkills();
+		List<Skills> listOfSkills = skillsDao.getAllSkills();
 		for (Skills existingSkill : listOfSkills) {
 			if (skill.getSkillId() == existingSkill.getSkillId()) {
-				Status status = skillsDao.updateSkill(skill);
-				return status;
+				return skillsDao.updateSkill(skill);
 			}
 		}
 		return Status.NOT_EXIST;

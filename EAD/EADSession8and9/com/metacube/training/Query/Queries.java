@@ -1,7 +1,7 @@
 package com.metacube.training.Query;
 
 /**
- * This class contains Queries related to database
+ * This class contains all the Queries related to database operations
  * 
  * @author Mohit Sharma
  *
@@ -14,13 +14,16 @@ public class Queries {
 
 	public static final String GET_EMPLOYEE_BY_CODE = "SELECT * from employee " + "WHERE code = ?";
 
-	public static final String GET_EMPLOYEE_BY_EMAIL = "SELECT * from employee " + "WHERE emailId = ?";
+	public static final String GET_EMPLOYEE_BY_EMAIL = "SELECT * from employee " + "WHERE email = ?";
 
 	public static final String SEARCH_EMPLOYEES = "SELECT * from employee " + "WHERE first_name = ? OR last_name =?";
 
 	public static final String UPDATE_EMPLOYEE = "UPDATE Employee set first_name = ?, middle_name = ?, "
 			+ "last_name = ?, dob = ?, gender = ?, email = ?, contact = ?, skype_id = ?,"
 			+ "profile_picture = ? , skills = ? " + "WHERE code = ?";
+
+	public static final String UPDATE_EMPLOYEE_BY_CODE = "UPDATE Employee set first_name = ?, middle_name = ?, "
+			+ "last_name = ?, dob = ?, gender = ?, email = ?" + ", skills = ? " + "WHERE code = ?";
 
 	public static final String DELETE_EMPLOYEE = "UPDATE employee " + "SET enabled = 'false' " + "WHERE code = ?";
 
@@ -34,15 +37,15 @@ public class Queries {
 	public static final String UPDATE_PROJECT = "UPDATE project_master set "
 			+ "name = ?, description = ?, start_date = ?, end_date = ?, project_logo = ? " + "WHERE project_id = ?";
 
-	public static final String DELETE_PROJECT = "DLETE FROM project_master " + "WHERE project_id = ?";
+	public static final String DELETE_PROJECT = "DELETE FROM project_master " + "WHERE project_id = ?";
 
-	public static final String ADD_SKILL = "INSERT INTO Skill_Master(Name)" + " VALUES " + "(?)";
+	public static final String ADD_SKILL = "INSERT INTO Skill_Master(skill_name)" + " VALUES " + "(?)";
 
 	public static final String GET_ALL_SKILLS = "SELECT * from skill_master";
 
-	public static final String GET_SKILL_BY_ID = "SELECT * from skill_master " + "WHERE project_id = ?";
+	public static final String GET_SKILL_BY_ID = "SELECT * from skill_master " + "WHERE skill_id = ?";
 
-	public static final String UPDATE_SKILL = "UPDATE skill_master set " + "name = ? " + "WHERE skill_id = ?";
+	public static final String UPDATE_SKILL = "UPDATE skill_master set " + "skill_name = ? " + "WHERE skill_id = ?";
 
 	public static final String DELETE_SKILL = "DELETE FROM skill_master " + "WHERE skill_id = ?";
 

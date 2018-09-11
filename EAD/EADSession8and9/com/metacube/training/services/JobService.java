@@ -1,6 +1,5 @@
 package com.metacube.training.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,6 @@ import com.metacube.training.models.JobTitle;
  * @author Mohit Sharma
  *
  */
-
 @Service
 public class JobService {
 
@@ -28,8 +26,7 @@ public class JobService {
 	 * @return
 	 */
 	public Status addJob(JobTitle job) {
-		Status status = jobDao.addJob(job);
-		return status;
+		return jobDao.addJob(job);
 	}
 
 	/**
@@ -62,8 +59,7 @@ public class JobService {
 		if (job == null) {
 			return Status.NOT_EXIST;
 		} else {
-			Status status = jobDao.deleteJob(code);
-			return status;
+			return jobDao.deleteJob(code);
 		}
 	}
 
@@ -74,12 +70,10 @@ public class JobService {
 	 * @return
 	 */
 	public Status updateJob(JobTitle job) {
-		List<JobTitle> listOfJob = new ArrayList<JobTitle>();
-		listOfJob = jobDao.getAllJobs();
+		List<JobTitle> listOfJob = jobDao.getAllJobs();
 		for (JobTitle existingJob : listOfJob) {
 			if (job.getJobCode() == existingJob.getJobCode()) {
-				Status status = jobDao.updateJob(job);
-				return status;
+				return jobDao.updateJob(job);
 			}
 		}
 		return Status.NOT_EXIST;

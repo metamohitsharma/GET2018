@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Employee</title>
+<title>Searched Employee</title>
 </head>
 <body>
 	<div th:if="${not #lists.isEmpty(employees)}">
@@ -16,8 +16,10 @@
 				<th>DOB</th>
 				<th>Gender</th>
 				<th>Email</th>
+				<th>Contact</th>
+				<th>SkypeId</th>
+				<th>Profile Picture</th>
 				<th>Skills</th>
-				<th>Edit</th>
 			</tr>
 			<tr th:each="employee : ${employees}">
 				<td th:text="${employee.code}">Id</td>
@@ -27,9 +29,10 @@
 				<td th:text="${employee.dob}">DOB</td>
 				<td th:text="${employee.gender}">Gender</td>
 				<td th:text="${employee.emailId}">Email</td>
-				<!--  <td th:text="${employee.password}">Password</td>-->
+				<td th:text="${employee.contact}">Contact</td>
+				<td th:text="${employee.skypeId}">SkypeId</td>
+				<td th:text="${employee.profilePicture}">ProfilePicture</td>
 				<td th:text="${employee.skills}">Skills</td>
-				<td><a th:href="${'editEmployee?code=' + employee.code}">Edit</a></td>
 			</tr>
 		</table>
 	</div>

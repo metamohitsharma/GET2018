@@ -30,7 +30,7 @@ public class SkillsDao {
 	 */
 	public Status addSkill(Skills skill) {
 		try {
-			connection = ConnectionToDB.getConnection();
+			connection = ConnectionToDatabase.getConnection();
 			String query = Queries.ADD_SKILL;
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, skill.getSkillName());
@@ -54,7 +54,7 @@ public class SkillsDao {
 	public List<Skills> getAllSkills() {
 		List<Skills> listOfSkills = new ArrayList<Skills>();
 		try {
-			connection = ConnectionToDB.getConnection();
+			connection = ConnectionToDatabase.getConnection();
 			String query = Queries.GET_ALL_SKILLS;
 			PreparedStatement statement = connection.prepareStatement(query);
 			ResultSet resultSet = statement.executeQuery();
@@ -82,13 +82,13 @@ public class SkillsDao {
 	public Skills getSkillById(int id) {
 		Skills skill = new Skills();
 		try {
-			connection = ConnectionToDB.getConnection();
+			connection = ConnectionToDatabase.getConnection();
 			String query = Queries.GET_SKILL_BY_ID;
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setInt(1, id);
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
-				skill.setSkillId(resultSet.getInt("skil_id"));
+				skill.setSkillId(resultSet.getInt("skill_id"));
 				skill.setSkillName(resultSet.getString("skill_name"));
 			}
 		} catch (SQLException ex) {
@@ -107,8 +107,8 @@ public class SkillsDao {
 	 */
 	public Status updateSkill(Skills skill) {
 		try {
-			connection = ConnectionToDB.getConnection();
-			String query = Queries.UPDATE_PROJECT;
+			connection = ConnectionToDatabase.getConnection();
+			String query = Queries.UPDATE_SKILL;
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, skill.getSkillName());
 			statement.setInt(2, skill.getSkillId());
@@ -132,7 +132,7 @@ public class SkillsDao {
 	 */
 	public Status deleteSkill(int id) {
 		try {
-			connection = ConnectionToDB.getConnection();
+			connection = ConnectionToDatabase.getConnection();
 			String query = Queries.DELETE_SKILL;
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setInt(1, id);

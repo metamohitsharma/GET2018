@@ -29,7 +29,7 @@ public class ProjectDao {
 	 */
 	public Status addProject(Project project) {
 		try {
-			connection = ConnectionToDB.getConnection();
+			connection = ConnectionToDatabase.getConnection();
 			String query = Queries.ADD_PROJECT;
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, project.getName());
@@ -57,7 +57,7 @@ public class ProjectDao {
 	public List<Project> getAllProjects() {
 		List<Project> listOfProject = new ArrayList<Project>();
 		try {
-			connection = ConnectionToDB.getConnection();
+			connection = ConnectionToDatabase.getConnection();
 			String query = Queries.GET_ALL_PROJECTS;
 			PreparedStatement statement = connection.prepareStatement(query);
 			ResultSet resultSet = statement.executeQuery();
@@ -89,7 +89,7 @@ public class ProjectDao {
 	public Project getProjectById(int id) {
 		Project project = new Project();
 		try {
-			connection = ConnectionToDB.getConnection();
+			connection = ConnectionToDatabase.getConnection();
 			String query = Queries.GET_PROJECT_BY_ID;
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setInt(1, id);
@@ -118,7 +118,7 @@ public class ProjectDao {
 	 */
 	public Status updateProject(Project project) {
 		try {
-			connection = ConnectionToDB.getConnection();
+			connection = ConnectionToDatabase.getConnection();
 			String query = Queries.UPDATE_PROJECT;
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, project.getName());
@@ -147,7 +147,7 @@ public class ProjectDao {
 	 */
 	public Status deleteProject(int id) {
 		try {
-			connection = ConnectionToDB.getConnection();
+			connection = ConnectionToDatabase.getConnection();
 			String query = Queries.DELETE_PROJECT;
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setInt(1, id);

@@ -14,14 +14,18 @@ import com.metacube.training.models.Employee;
 public class EmployeeMapper implements RowMapper<Employee> {
 	public Employee mapRow(ResultSet resultSet, int i) throws SQLException {
 		Employee employee = new Employee();
-		employee.setCode(resultSet.getInt("emp_code"));
-		employee.setFirstName(resultSet.getString("first_name"));
-		employee.setMiddleName(resultSet.getString("middle_name"));
-		employee.setLastName(resultSet.getString("last_name"));
-		employee.setDob(resultSet.getDate("dob"));
-		employee.setGender(resultSet.getString("gender"));
-		employee.setEmailId(resultSet.getString("email_id"));
-		employee.setPassword(resultSet.getString("password"));
+		employee.setCode(resultSet.getInt(1));
+		employee.setFirstName(resultSet.getString(2));
+		employee.setMiddleName(resultSet.getString(3));
+		employee.setLastName(resultSet.getString(4));
+		employee.setDob(resultSet.getDate(5));
+		employee.setGender(resultSet.getString(6));
+		employee.setEmailId(resultSet.getString(7));
+		employee.setContact(resultSet.getString(8));
+		employee.setSkypeId(resultSet.getString(9));
+		employee.setProfilePicture(resultSet.getString(10));
+		employee.setPassword(resultSet.getString(11));
+		employee.setSkills(resultSet.getString(13));
 		return employee;
 	}
 }
