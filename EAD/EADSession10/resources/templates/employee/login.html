@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Admin Login</title>
+</head>
+<body>
+	<center>
+		<h1>Employee Login</h1>
+		<form th:action="@{employee/login}" method="POST">
+			Email <input type="text" name="email"> <br> Password<input
+				type="password" name="password"> <br> <input
+				type="submit" value="submit">
+			<div th:if="${error}">Invalid username or password.</div>
+		</form>
+		<form th:action="@{employee/forgotPassword}" method="POST">
+			<input type="submit" value="Forgot Password">
+		</form>
+	</center>
+</body>
+</html>
