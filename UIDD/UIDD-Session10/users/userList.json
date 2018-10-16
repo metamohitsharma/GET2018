@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "city": "Bombay",
+      "contact": 1472583690,
+      "name": "Aashi"
+    },
+    {
+      "id": "2",
+      "name": "Sia",
+      "city": "Atlanta",
+      "contact": 1234567890
+    },
+    {
+      "id": "3",
+      "name": "John",
+      "city": "Paris",
+      "contact": 1234567890
+    }
+  ]
+}
