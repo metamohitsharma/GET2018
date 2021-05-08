@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registeration Page</title>
+	<script src="Scripts/validation.js"></script>
+</head>
+<body align="center">
+	<div>
+		<table align="center">
+			<tr>
+				<td align="left" width="60%"> <img src="Images/html.png" height="30%" /> </td>
+				<td><a href="HomePage.html">Home</a>
+					<a href="">About</a>
+					<a href="">Product</a>
+					<a href="">Gallery</a>
+					<a href="Contact.html">Contact</a>
+					<a href="Login.html">Login</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<hr width="50%" />
+	<div>
+		<h1>Register!!!</h1>
+		<form action="Login.html" onsubmit="return validation();" name="signupform">
+			<table align="center" cellspacing="10px">
+				<tr align="left">
+					<td width="50%">First Name</td>
+					<td><input type="text" name="firstName" placeholder="Enter First Name" required></td>
+				</tr>
+				<tr align="left">
+					<td>Last Name</td>
+					<td><input type="text" name="lastName" placeholder="Enter Last Name" required></td>
+				</tr>
+				<tr align="left">
+					<td>Email</td>
+					<td>
+						<input type="text" name="email" placeholder="Enter Email" required>
+					</td>
+				</tr>
+				<tr align="left">
+					<td width="30">Password</td>
+					<td><input type="password" name="password" placeholder="Enter Password" required></td>
+				</tr>
+				<tr align="left">
+					<td>Confirm Password</td>
+					<td><input type="password" name="confirmPassword" placeholder="Confirm Password" required></td>
+				</tr>
+				<tr align="left">
+					<td>Contact Number</td>
+					<td><input type="number" name="contact" placeholder="Enter Contact No." required></td>
+				</tr>
+				<tr align="left">
+					<td>
+						Company
+					</td>
+					<td>
+						<select name="Company">
+							<option value="None" disabled selected>Select your option</option>
+							<option value="Metacube">Metacube</option>
+							<option value="Google">Google</option>
+							<option value="Wiprp">Wipro</option>
+							<option value="TCS">TCS</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="left">
+						<input type="submit" name="submit" value="Submit">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<hr width="50%" />
+	<div>
+		<font size="1px">
+			<p align="center">&copy;Copyright 2016-17 | All Rights Reserved | Metacube Training</p>
+		</font>
+	</div>
+</body>
+</html>
