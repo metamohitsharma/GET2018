@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>Edit project Details</title>
+
+</head>
+<body>
+	<a th:href="@{/admin/dashboard}">DashBoard</a>
+	<a th:href="@{/admin/addEmployee}">Add Employee</a>
+	<a th:href="@{/admin/allEmployees}">Show All Employees</a>
+	<a th:href="@{/project/addProject}">Add project</a>
+	<a th:href="@{/project/allProjects}">Show all project</a>
+	<a th:href="@{/job/addJobs}">Add Job</a>
+	<a th:href="@{/skills/addSkills}">Add Skills</a>
+	<a th:href="@{/admin/searchEmployees}">Search Employee</a>
+	<form th:action="@{/Logout}" method="POST">
+		<input type="submit" value="Logout" />
+	</form>
+	<br>
+	<div>
+		<form th:object="${project}" th:action="@{addProject}" method="post">
+			<input type="hidden" th:field="*{projectId}" /> <br> <label>Name:</label>
+			<input type="text" th:field="*{name}" /> <br> <label>Description:</label>
+			<input type="text" th:field="*{description}" /> <br> <label>Start
+				Date:</label> <input type="date" th:field="*{startDate}" /> <br> <label>End
+				Date:</label> <input type="date" th:field="*{endDate}" /> <br> <label>Project
+				Logo:</label> <input type="text" th:field="*{projectLogo}" />
+			<button type="submit">Save</button>
+		</form>
+	</div>
+</body>
+</html>
