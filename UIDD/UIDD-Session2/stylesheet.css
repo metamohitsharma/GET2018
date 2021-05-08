@@ -1,0 +1,357 @@
+body{
+	font-style: aerial;
+}
+
+#topscreen {
+background-image: url("images/homebg.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#topscreenlogo{
+	float: left;
+	text-align: center;
+	margin-top: 3%;
+}
+
+#googleplus{
+	height: 16px;
+	padding-bottom: 1%;
+}
+
+#instagram{
+	margin-top: 10px;
+}
+.inline{
+	margin: 2% 0% 0% 0%;
+}
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+.flex{
+	display: flex;
+	padding-bottom: .8%;
+}
+.center{
+	margin: auto; 
+	font-size: 135%;
+	padding-top: 2%;
+}
+
+nav a{
+	margin: 0px 5px;
+	text-decoration: none;
+	color: #CCE0DF;
+}
+
+.centertitle1{
+	margin: auto;
+	text-align: center;
+	margin-top: 6%;
+	font-size: 175%;
+	color:#6388FB;
+	transform: scale(1, .95);
+}
+
+header, footer, section  {
+	padding: 0px 150px;
+}
+
+#home {
+	background-image: url("images/homebg.png");
+	background-size: 100% 100%;
+}
+
+header {
+	background-image: url("images/homebg.png");
+}
+
+body {
+	background-image: url("images/bodybg.png");
+}
+
+#topscreenright{
+	background-size: 10px 10px;
+}
+
+nav img {
+	height: 20px;
+	margin: 5px 5px;
+}
+
+#home {
+	display: flex;
+	justify-content: space-between;
+
+}
+
+#topscreenleft{
+	padding-top: 10%;
+
+}
+
+#topscreenright {
+	padding-top: 10%;
+	padding-bottom: 40%;
+	height: 600px;
+}
+
+#topscreentitle{
+	font-size: 500%;
+	color: white;
+}
+
+#downloadbutton{
+	margin-top: 6%;
+	padding: 2.5% 5.5%;
+	background-color: #f46542;
+	border: none;
+	color: white;
+	border-radius: 4px;
+	margin-right: 3%;
+}
+
+#featuresbutton{
+	margin-top: 6%;
+	padding: 2.5% 5.5%;
+	background-color: #5641f4;
+	border: none;
+	color: white;
+	border-radius: 4px;
+}
+
+#featurescreen p{
+	color:#989898;
+	font-size: 80%;
+	padding-top: 1.5%;
+	margin-bottom: 8%;
+}
+
+.centertitle{
+	margin: auto;
+	text-align: center;
+	/*margin-top: 4%;*/
+	font-size: 175%;
+	color:#6388FB;
+	transform: scale(1, .95);
+
+}
+
+#features{
+	display: flex;
+	/*margin-top: 7%;*/
+	justify-content: space-between;
+	align-items: flex-start;
+	margin: 0% 5%;
+}
+
+#leftfeature,#midfeature,#rightfeature {
+	display: flex;
+	justify-content: space-between;
+}
+
+#featurescreen img{
+	height: 60px;
+	padding-top: 0px;
+}
+
+.featuredetails {
+	font-size: 160%;
+	margin-left: 2%;
+}
+
+.featureicon,.featuredetails{
+	vertical-align: top;
+}
+
+#featurescreen h3{
+	margin-bottom: 7%;
+}
+
+#sliderimages img{
+	height: 900px;
+	margin: 3% 10% 0% 10%;
+	transform: scale(1, .8);
+}
+
+.screenshotscontent{
+	margin-top: 10%;
+	margin-left: 16%;
+	margin-right: 16%;
+	display: flex;
+	justify-content: space-between;
+	width: 70%;
+}
+
+.graphicdescpright img{
+	height: 80px;
+}
+
+.graphicdescpright {
+	margin-top: 15%;
+}
+
+.graphicdescpright h2{
+	font-size: 250%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+} 
+
+#Screenshots_nav p{
+	color: #989898;
+	/*font-size: 175%;*/
+}
+
+.centertitle p {
+	color: #989898;
+	font-size: 75%;
+	padding-top: 1.5%;
+}
+
+.graphicdescpright {
+	margin-left: 20%;
+	padding-bottom: 10%;
+}
+
+.graphicdescpright p {
+	font-size: 160%;
+	color: #989898;
+	width: 120%;
+	word-spacing: 2px;
+}
+
+.graphicdescpleft img{
+	height: 80px;
+}
+.graphicdescpleft {
+	margin-top: 15%;
+}
+
+.graphicdescpleft h2{
+	font-size: 250%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+} 
+
+.graphicdescpleft {
+	margin-right: 20%;
+	padding-bottom: 10%;
+}
+
+.graphicdescpleft p {
+	font-size: 160%;
+	color: #989898;
+	width: 120%;
+	word-spacing: 2px;
+}
+
+#screenshotsscreen{
+	padding-bottom: 2%;
+}
+
+.reviewrow {
+	display: flex;
+	justify-content: space-between;
+}
+
+.review {
+	margin:15px 30px;
+}
+
+.review div {
+	margin: 15px 0px 0px 0px;
+}
+
+.centertitle2 {
+	margin: auto;
+	text-align: center;
+	margin-top: 6%;
+	font-size: 175%;
+	color:#6388FB;
+	transform: scale(1, .95);
+}
+
+#reviewsection h3{
+	font-size: 170%;
+	color: #383A53;
+}
+
+#reviewsection p{
+	font-size: 120%;
+}
+
+.end_quote {
+	float: right;
+}
+
+#reviewsection{
+	margin: 4% 0%;
+}
+
+.downloadsection {
+	background-image: url("images/downloadbg.png");
+	display: flex;
+	justify-content: space-between;
+}
+
+.downloaddescp {
+	margin-top: 12%;
+	margin-left: 5%;
+}
+
+.downloaddescp h2{
+	font-size: 250%;
+	color: white;
+}
+
+.downloaddescp p{
+	font-size: 130%;
+	color: white;
+	padding-top: 3%;
+	padding-bottom: 3%;
+} 
+
+#downloadgraphic img{
+	/*height: 60%;*/
+	margin-top: 20%;
+	vertical-align: bottom;
+}
+
+#download_content{
+	width: 70%;
+	word-spacing: 2px;
+}
+
+#download_button{
+	padding-top: 3%;
+}
+
+#googleplay{
+	padding-left: 2%;
+}
+
+footer{
+	background-color: #383A53;
+}
+
+#footerdisclam{
+	text-align: center;
+	padding: 2% 0%;
+	color: #B2B3AF;
+}
+
+#bottomscreenlogo {
+	float: left;
+	text-align: center;
+	margin-top: 3%;
+}
+
+hr {
+	background-color: #4D4F5E;
+	border: none;
+	height: 1px;
+	margin: 20px 0px;
+}
