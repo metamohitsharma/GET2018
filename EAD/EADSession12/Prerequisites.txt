@@ -1,0 +1,1 @@
+- Copy all folder in src/main
